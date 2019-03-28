@@ -21,7 +21,8 @@ class Button: SKSpriteNode {
         let action = SKAction.scale(by: 0.85, duration: 0.1)
         run(action)
     }
-     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let action = SKAction.scale(by: 1.0/0.85, duration: 0.1)
         run(action)
         

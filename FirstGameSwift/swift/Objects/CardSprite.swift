@@ -19,5 +19,6 @@ class CardSprite : Button {
         self.backTexture = SKTexture(imageNamed: card.textB)
         
         self.texture = backTexture
+        self.isUserInteractionEnabled = true
     }
 }
