@@ -52,7 +52,6 @@ class EasyScene : Scene {
                 addChild(cards[c])
             }
         }
-        
     }
     
     override func update(_ currentTime: TimeInterval) {
