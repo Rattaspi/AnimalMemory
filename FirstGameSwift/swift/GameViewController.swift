@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate /*EasySceneDelegate, MediumSceneDelegate, HardSceneDelegate, LeaderboardSceneDelegate*/ {    
+class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {    
     
     func backToMainMenu(sender: MediumScene) {
         if let view = self.view as? SKView{

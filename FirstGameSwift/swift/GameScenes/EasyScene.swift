@@ -16,7 +16,6 @@ class EasyScene : Scene {
     
     override func didMove(to view: SKView) {
         //placeholderText = "EASY SCENE"
-        print("ASDF")
         
         super.didMove(to: view)
         
@@ -32,7 +31,7 @@ class EasyScene : Scene {
             for card in cards {
                 let cardSprite = CardSprite(imageNamed: "")
                 if let gamelogic = gamelogic {
-                    cardSprite.setUp(card: card, scene: self, size: CGSize(width: 96, height: 115), delegate: gamelogic)
+                    cardSprite.setUp(card: card, scene: self, size: CGSize(width: 70, height: 84), delegate: gamelogic)
                     displayingCards?.append(cardSprite)
                 }
             }

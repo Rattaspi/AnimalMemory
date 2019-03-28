@@ -19,6 +19,8 @@ class CardSprite : Button {
     var cardSize: CGSize?
     var cardDelegate: CardBehavior?
     
+    var flipping = false
+    
     func setUp(card: Card, scene: SKScene, size: CGSize, delegate: CardBehavior){
         self.card = card
         self.frontTexture = SKTexture(imageNamed: card.textF)
@@ -40,14 +42,29 @@ class CardSprite : Button {
     }
     
     func flip(){
+        if(flipping){
+           return
+        }
+        
+        flipping = true
         let flipCard = SKAction.sequence([
             SKAction.scaleX(by: 0.001, y: 1, duration: 0.3),
             SKAction.run {
-                self.texture = self.frontTexture
+                if(self.card?.state == Card.State.covered){
+                    self.texture = self.frontTexture
+                    self.card?.state = Card.State.discovered
+                }
+                else {
+                    self.texture = self.backTexture
+                    self.card?.state = Card.State.covered
+                }
             },
             SKAction.scaleX(by: 1/0.001, y: 1, duration: 0.3),
             SKAction.run {
-                self.cardDelegate?.cardFlipped(card: self)
+                self.flipping = false
+                if(self.card?.state == Card.State.discovered){
+                    self.cardDelegate?.cardFlipped(card: self)
+                }
             }
             ])
         
