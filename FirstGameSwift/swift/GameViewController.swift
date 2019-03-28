@@ -12,6 +12,17 @@ import GameplayKit
 
 class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {    
     
+    func backToMainMenu() {
+        print("back to main menu")
+        if let view = self.view as? SKView{
+            let scene = MainMenuScene(size: view.frame.size)
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+            scene.changeSceneDelegate = self
+            print("Go")
+        }
+    }
+    
     func backToMainMenu(sender: MediumScene) {
         if let view = self.view as? SKView{
             let scene = MainMenuScene(size: view.frame.size)
@@ -63,6 +74,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
         }
     }
     func goToHard(sender: MainMenuScene){
@@ -71,6 +83,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
         }
     }
     func goToLeaderboards(sender: MainMenuScene) {
@@ -80,6 +93,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
         }
         */
     }

@@ -19,10 +19,11 @@ class Gamelogic: CardBehavior {
     var revealedCard: CardSprite?
     var points = 0
     var goal: Int? //The matches you need to win the game
+    var currentMatches: Int? //How many matches have you made in the current level
     
     func start(level: Level){
         self.level = level
-        
+        self.currentMatches = 0
         //CREATE THE CARDS
         let _cardSufx = cardSufx.shuffled()
         for i in 0..<level.rawValue/2{
@@ -38,6 +39,16 @@ class Gamelogic: CardBehavior {
         */
     }
     
+    func checkWin() -> Bool {
+        if let currentMatches = self.currentMatches, let goal = self.goal {
+            let win = currentMatches >= goal
+            return win
+        }
+        else{
+         return false
+        }
+    }
+    
     //when a card is flipped this method is called
     func cardFlipped(card: CardSprite) {
         //TODO
@@ -45,9 +56,14 @@ class Gamelogic: CardBehavior {
             revealedCard = card
         }
         else {
+            //Match found
             if(revealedCard?.card?.textF == card.card?.textF){
                 revealedCard?.card?.state = .matched
                 card.card?.state = .matched
+                self.currentMatches? += 1
+                
+                revealedCard?.isUserInteractionEnabled = false
+                card.isUserInteractionEnabled = false
             }
             else {
                 revealedCard?.flip()

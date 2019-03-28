@@ -13,10 +13,12 @@ protocol SceneDelegate: class {
     func backToMainMenu(sender: MediumScene)
     func backToMainMenu(sender: HardScene)
     func backToMainMenu(sender: LeaderboardsScene)
+    func backToMainMenu()
 }
 
 class Scene: SKScene, ButtonDelegate {
     weak var changeSceneDelegate : SceneDelegate?
+    weak var gameoverDelegate: SceneDelegate?
     
     public var easyText : SKLabelNode?
     var placeholderText: String?
@@ -50,10 +52,18 @@ class Scene: SKScene, ButtonDelegate {
             
             addChild(backButton)
             backButton.createButtonText(text: "Atras")
-            //backButton.delegate = self
         }
         
         Common.addCredits(scene: self)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        if let win = gamelogic?.checkWin() {
+            if(win){
+                //PROBLEM - gameoverDelegate is null but im assigning it from GameViewController.swift
+                gameoverDelegate?.backToMainMenu()
+            }
+        }
     }
     
     func onTap(sender: Button) {

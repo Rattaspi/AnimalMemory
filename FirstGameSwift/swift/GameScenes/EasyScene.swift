@@ -59,6 +59,7 @@ class EasyScene : Scene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
     }
     
     override func onTap(sender: Button) {
