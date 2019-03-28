@@ -8,32 +8,49 @@
 
 import SpriteKit
 
+protocol CardBehavior: class{
+    func cardFlipped(card: CardSprite)
+}
+
 class CardSprite : Button {
     var card: Card?
     var frontTexture: SKTexture?
     var backTexture: SKTexture?
     var cardSize: CGSize?
-    let flipCard = SKAction.sequence([
-        SKAction.scaleX(by: 0.001, y: 1, duration: 0.3),
-        SKAction.run {
-            
-        },
-        SKAction.scaleX(by: 1/0.001, y: 1, duration: 0.3)
-        ])
+    var cardDelegate: CardBehavior?
     
-    func setUp(card: Card, scene: SKScene, size: CGSize){
+    func setUp(card: Card, scene: SKScene, size: CGSize, delegate: CardBehavior){
         self.card = card
         self.frontTexture = SKTexture(imageNamed: card.textF)
         self.backTexture = SKTexture(imageNamed: card.textB)
         self.cardSize = size
-        scale(to: size)
+        self.cardDelegate = delegate
         
         self.texture = backTexture
         self.isUserInteractionEnabled = true
+        scale(to: size)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
+        
+        if(card?.state == Card.State.covered) {
+            flip()
+        }
+    }
+    
+    func flip(){
+        let flipCard = SKAction.sequence([
+            SKAction.scaleX(by: 0.001, y: 1, duration: 0.3),
+            SKAction.run {
+                self.texture = self.frontTexture
+            },
+            SKAction.scaleX(by: 1/0.001, y: 1, duration: 0.3),
+            SKAction.run {
+                self.cardDelegate?.cardFlipped(card: self)
+            }
+            ])
+        
         run(flipCard)
     }
 }

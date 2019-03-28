@@ -6,7 +6,22 @@
 //  Copyright © 2019 Alex Canut. All rights reserved.
 //
 
-class Gamelogic {
+class Gamelogic: CardBehavior {
+    //when a card is flipped this method is called
+    func cardFlipped(card: CardSprite) {
+        //TODO
+        if(revealedCard == nil){
+            revealedCard = card.card
+        }
+        else {
+            if(revealedCard?.textF == card.card?.textF){
+                revealedCard?.state = .matched
+                card.card?.state = .matched
+                revealedCard = nil
+            }
+        }
+    }
+    
     enum Level: Int {case easy = 8, medium = 16, hard = 30};
     
     var cards = [Card]()
@@ -14,6 +29,9 @@ class Gamelogic {
     var selectedCard: Card?
     var level: Level?
     let cardSufx: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+    
+    //in game variables
+    var revealedCard: Card?
     
     func start(level: Level){
         self.level = level

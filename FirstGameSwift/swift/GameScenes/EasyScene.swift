@@ -16,6 +16,7 @@ class EasyScene : Scene {
     
     override func didMove(to view: SKView) {
         //placeholderText = "EASY SCENE"
+        print("ASDF")
         
         super.didMove(to: view)
         
@@ -29,29 +30,31 @@ class EasyScene : Scene {
         displayingCards = [CardSprite]()
         if let cards = gamelogic?.cards {
             for card in cards {
-                let cardSprite = CardSprite(imageNamed: "animal_0")
-                cardSprite.setUp(card: card, scene: self, size: CGSize(width: 96, height: 115))
-                displayingCards?.append(cardSprite)
+                let cardSprite = CardSprite(imageNamed: "")
+                if let gamelogic = gamelogic {
+                    cardSprite.setUp(card: card, scene: self, size: CGSize(width: 96, height: 115), delegate: gamelogic)
+                    displayingCards?.append(cardSprite)
+                }
             }
         }
-        
+    
         //Setup the cardsprite positions and
         //add those to the scene
         let initialPos = CGPoint(x: self.frame.width * 0.20, y: self.frame.height * 0.4)
         let offsetX = self.frame.width * 0.2
         let offsetY = self.frame.height * 0.16
         if let cards = displayingCards {
+            let cardShuffled = cards.shuffled()
             for row in 0 ..< 2 {
                 for column in 0 ..< 4 {
                     let i = row * 4 + column
                     let x = initialPos.x + offsetX * CGFloat(column)
                     let y = initialPos.y + offsetY * CGFloat(row)
-                    cards[i].position = CGPoint(x: x, y: y)
-                    //cards[row*4 + column].scale(to: cards[row*4 + column].size)
+                    cardShuffled[i].position = CGPoint(x: x, y: y)
                 }
             }
-            for c in 0 ..< cards.count {
-                addChild(cards[c])
+            for c in 0 ..< cardShuffled.count {
+                addChild(cardShuffled[c])
             }
         }
     }
