@@ -9,11 +9,7 @@
 import SpriteKit
 
 protocol SceneDelegate: class {
-    func backToMainMenu(sender: EasyScene)
-    func backToMainMenu(sender: MediumScene)
-    func backToMainMenu(sender: HardScene)
-    func backToMainMenu(sender: LeaderboardsScene)
-    func backToMainMenu()
+    func backToMainMenu(sender: Scene)
 }
 
 class Scene: SKScene, ButtonDelegate {
@@ -60,8 +56,13 @@ class Scene: SKScene, ButtonDelegate {
     override func update(_ currentTime: TimeInterval) {
         if let win = gamelogic?.checkWin() {
             if(win){
-                //PROBLEM - gameoverDelegate is null but im assigning it from GameViewController.swift
-                gameoverDelegate?.backToMainMenu()
+                let sequence = SKAction.sequence([
+                    SKAction.wait(forDuration: 0.1),
+                    SKAction.run {
+                        self.gameoverDelegate?.backToMainMenu(sender: self)
+                    }
+                    ])
+                run(sequence)
             }
         }
     }

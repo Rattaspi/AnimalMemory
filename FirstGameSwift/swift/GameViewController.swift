@@ -12,53 +12,14 @@ import GameplayKit
 
 class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {    
     
-    func backToMainMenu() {
-        print("back to main menu")
-        if let view = self.view as? SKView{
-            let scene = MainMenuScene(size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
-            print("Go")
-        }
-    }
-    
-    func backToMainMenu(sender: MediumScene) {
+    func backToMainMenu(sender: Scene) {
         if let view = self.view as? SKView{
             let scene = MainMenuScene(size: view.frame.size)
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
         }
-    }
-    
-    func backToMainMenu(sender: HardScene) {
-        if let view = self.view as? SKView{
-            let scene = MainMenuScene(size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
-        }
-    }
-    
-    func backToMainMenu(sender: EasyScene) {
-        if let view = self.view as? SKView{
-            let scene = MainMenuScene(size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
-        }
-    }
-    
-    func backToMainMenu(sender: LeaderboardsScene) {
-        if let view = self.view as? SKView{
-            let scene = MainMenuScene(size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
-        }
-    }
-    
+    }    
     
     func goToEasy(sender: MainMenuScene) {
         if let view = self.view as? SKView {
@@ -66,6 +27,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
         }
     }
     func goToMedium(sender: MainMenuScene){

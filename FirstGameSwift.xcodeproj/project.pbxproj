@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A16E6F9223C04DA007F1C26 /* MediumScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16E6F8223C04DA007F1C26 /* MediumScene.swift */; };
 		2A16E6FB223C064B007F1C26 /* HardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16E6FA223C064B007F1C26 /* HardScene.swift */; };
+		2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20D2A3224E541E00FBB63D /* Preferences.swift */; };
 		2A4388A522314E3C002C98E8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4388A422314E3C002C98E8 /* Button.swift */; };
 		2A5DE0682243C6900011F5D5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE0672243C6900011F5D5 /* Common.swift */; };
 		2A5DE06B2243CA920011F5D5 /* Gamelogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE06A2243CA920011F5D5 /* Gamelogic.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		2A16E6F8223C04DA007F1C26 /* MediumScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumScene.swift; sourceTree = "<group>"; };
 		2A16E6FA223C064B007F1C26 /* HardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardScene.swift; sourceTree = "<group>"; };
+		2A20D2A3224E541E00FBB63D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2A4388A422314E3C002C98E8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2A5DE0672243C6900011F5D5 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		2A5DE06A2243CA920011F5D5 /* Gamelogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamelogic.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		2A5DE0652243C66C0011F5D5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A20D2A3224E541E00FBB63D /* Preferences.swift */,
 				2A5DE0672243C6900011F5D5 /* Common.swift */,
 			);
 			path = Common;
@@ -248,6 +251,7 @@
 				BCD83E69224D2C4A00B2F8DF /* GameoverScene.swift in Sources */,
 				2A8722FB223BDEF8006C0C7D /* EasyScene.swift in Sources */,
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,
+				2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */,
 				2A5DE06D2243CAD70011F5D5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

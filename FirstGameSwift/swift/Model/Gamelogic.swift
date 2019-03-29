@@ -6,6 +6,11 @@
 //  Copyright © 2019 Alex Canut. All rights reserved.
 //
 
+import SpriteKit
+
+//SKAudioNode
+//SKAction.playSoundFileNamed(<#T##soundFile: String##String#>, waitForCompletion: <#T##Bool#>)
+
 class Gamelogic: CardBehavior {
    
     
@@ -32,11 +37,6 @@ class Gamelogic: CardBehavior {
         }
         
         goal = level.rawValue/2
-        /* //DEBUG
-        for card in cards{
-            print("\(card.id) \(card.textF)")
-        }
-        */
     }
     
     func checkWin() -> Bool {
@@ -49,9 +49,10 @@ class Gamelogic: CardBehavior {
         }
     }
     
+    
+    //TODO: move the card flip to the scene, gamelogic only has to check if there is a match
     //when a card is flipped this method is called
     func cardFlipped(card: CardSprite) {
-        //TODO
         if(revealedCard == nil){
             revealedCard = card
         }
@@ -66,8 +67,15 @@ class Gamelogic: CardBehavior {
                 card.isUserInteractionEnabled = false
             }
             else {
-                revealedCard?.flip()
-                card.flip()
+                let sequence = SKAction.sequence([
+                    SKAction.wait(forDuration: 0.5),
+                    SKAction.run {
+                        self.revealedCard?.flip()
+                        card.flip()
+                    }
+                    ])
+              card.run(sequence)
+                
             }
             revealedCard = nil
         }

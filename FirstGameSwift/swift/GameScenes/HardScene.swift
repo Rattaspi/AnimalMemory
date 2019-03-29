@@ -40,7 +40,7 @@ class HardScene : Scene {
         
         //Setup the cardsprite positions and
         //add those to the scene
-        let initialPos = CGPoint(x: self.frame.width * 0.145, y: self.frame.height * 0.12)
+        let initialPos = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.12)
         let offsetX = self.frame.width * 0.168
         let offsetY = self.frame.height * 0.14
         if let cards = displayingCards {
