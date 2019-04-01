@@ -13,7 +13,14 @@ class GameoverScene: Scene {
     override func didMove(to view: SKView) {
         super.placeholderText = "GAME OVER"
         super.didMove(to: view)
+        backButton?.delegate = self
         
         
+    }
+    
+    override func onTap(sender: Button) {
+        if(sender == backButton){
+            changeSceneDelegate?.backToMainMenu(sender: self)
+        }
     }
 }

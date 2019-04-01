@@ -10,6 +10,7 @@ import SpriteKit
 
 protocol SceneDelegate: class {
     func backToMainMenu(sender: Scene)
+    func goToGameOver(sender: Scene)
 }
 
 class Scene: SKScene, ButtonDelegate {
@@ -22,6 +23,10 @@ class Scene: SKScene, ButtonDelegate {
     var displayingCards: [CardSprite]?
     var gamelogic: Gamelogic?
     var backButton: Button?
+    var scoreIcon: SKSpriteNode?
+    var scoreLabel: SKLabelNode?
+    var bonusIcon: SKSpriteNode?
+    var bonusLabel: SKLabelNode?
     
     override func didMove(to view: SKView) {        
         //BACKGROUND
@@ -42,12 +47,29 @@ class Scene: SKScene, ButtonDelegate {
         //placeholder back button
         backButton = Button(imageNamed: "MainMenu_button")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.9)
+            backButton.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.1)
             backButton.scaleAspectRatio(width: self.frame.width * 0.3)
             backButton.isUserInteractionEnabled = true
             
             addChild(backButton)
-            backButton.createButtonText(text: "Atras")
+            backButton.createButtonText(text: "Menu")
+        }
+        
+        //score icon
+        scoreIcon = SKSpriteNode(imageNamed: "score")
+        if let scoreIcon = scoreIcon {
+            scoreIcon.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.95)
+            scoreIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
+            
+            addChild(scoreIcon)
+        }
+        
+        //bonus icon
+        bonusIcon = SKSpriteNode(imageNamed: "medal1")
+        if let bonusIcon = bonusIcon{
+            bonusIcon.position = CGPoint(x: self.frame.width * 0.65, y: self.frame.height * 0.93)
+            bonusIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
+            addChild(bonusIcon)
         }
         
         Common.addCredits(scene: self)
@@ -57,9 +79,9 @@ class Scene: SKScene, ButtonDelegate {
         if let win = gamelogic?.checkWin() {
             if(win){
                 let sequence = SKAction.sequence([
-                    SKAction.wait(forDuration: 0.1),
+                    SKAction.wait(forDuration: 0.5),
                     SKAction.run {
-                        self.gameoverDelegate?.backToMainMenu(sender: self)
+                        self.gameoverDelegate?.goToGameOver(sender: self)
                     }
                     ])
                 run(sequence)

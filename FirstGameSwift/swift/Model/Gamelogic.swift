@@ -67,6 +67,7 @@ class Gamelogic: CardBehavior {
                 card.isUserInteractionEnabled = false
             }
             else {
+                /*
                 let sequence = SKAction.sequence([
                     SKAction.wait(forDuration: 0.5),
                     SKAction.run {
@@ -74,7 +75,10 @@ class Gamelogic: CardBehavior {
                         card.flip()
                     }
                     ])
-              card.run(sequence)
+                card.run(sequence)
+                */
+                self.revealedCard?.flip()
+                card.flip()
                 
             }
             revealedCard = nil

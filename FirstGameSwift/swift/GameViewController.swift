@@ -19,7 +19,16 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
         }
-    }    
+    }
+    
+    func goToGameOver(sender: Scene) {
+        if let view = self.view as? SKView{
+            let scene = GameoverScene(size: view.frame.size)
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+            scene.changeSceneDelegate = self
+        }
+    }
     
     func goToEasy(sender: MainMenuScene) {
         if let view = self.view as? SKView {
