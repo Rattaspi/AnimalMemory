@@ -21,9 +21,23 @@ class Gamelogic: CardBehavior {
     
     //IN GAME VARIABLES
     var revealedCard: CardSprite?
-    var points = 0
+    
     var goal: Int? //The matches you need to win the game
     var currentMatches: Int = 0 //How many matches have you made in the current level
+    var currentStreak: Int = 0
+    
+    var maxTime: Int = -1
+    var initialTime: CGFloat = -1
+    var currentGameTime: CGFloat = 0
+    var bonusTime: Int = -1 //This is te value that is printed in the screen
+    
+    //Scores to display in the gameover scene
+    var matchStreak = 0
+    var points = 0
+    var bonusScore = 0
+    var attempts = 0
+    
+    var win = false
     
     func start(level: Level){
         self.level = level
@@ -39,9 +53,22 @@ class Gamelogic: CardBehavior {
         goal = level.rawValue/2
     }
     
+    func update(_ currentTime: TimeInterval){
+        //Calculate the current time
+        if(initialTime < 0){
+            initialTime = CGFloat(currentTime)
+        }
+        currentGameTime = floor(CGFloat(currentTime) - initialTime)
+        bonusTime = maxTime - Int(currentGameTime) < 0 ? 0 : maxTime - Int(currentGameTime)
+        
+        //Check the win condition
+        self.win = checkWin()
+    }
+    
     func checkWin() -> Bool {
         if let goal = self.goal {
             let win = self.currentMatches >= goal
+            bonusScore = bonusTime * GameInfo.timeBonusMultiplier
             return win
         }
         else{
@@ -83,6 +110,7 @@ class Gamelogic: CardBehavior {
                 
             }
             revealedCard = nil
+            attempts += 1
         }
     }
     

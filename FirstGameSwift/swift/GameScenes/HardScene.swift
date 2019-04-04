@@ -15,14 +15,14 @@ import SpriteKit
 class HardScene : Scene {
     
     override func didMove(to view: SKView) {
-        maxTime = 90
-        super.didMove(to: view)
         
+        super.didMove(to: view)
         backButton?.delegate = self
         
         //Instantiate the gamelogic
         gamelogic = Gamelogic()
         gamelogic?.start(level: Gamelogic.Level.hard)
+        gamelogic?.maxTime = 90
         
         //SETUP THE CARDSPRITES
         displayingCards = [CardSprite]()

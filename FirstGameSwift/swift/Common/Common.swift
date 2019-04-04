@@ -8,12 +8,21 @@
 
 import SpriteKit
 
-class Common {
+class Common {    
     static func addCredits(scene : SKScene){
         let credits = SKLabelNode(text: "Game by: Alex Canut")
         credits.position = CGPoint(x: scene.frame.width * 0.95, y: scene.frame.height * 0.02)
         credits.fontSize = 15
         credits.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right
         scene.addChild(credits)
+    }
+    
+    static func setupBackground(scene: SKScene){
+        let background = SKSpriteNode(imageNamed: "MainMenu_bg")
+        if let view = scene.view{
+            background.position = view.center
+        }
+        background.scale(to: CGSize(width: scene.frame.width * background.frame.width / background.frame.height, height: scene.frame.height))
+        scene.addChild(background)
     }
 }

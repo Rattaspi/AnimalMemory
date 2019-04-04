@@ -11,14 +11,13 @@ import SpriteKit
 class EasyScene : Scene {
     
     override func didMove(to view: SKView) {
-        maxTime = 20
         super.didMove(to: view)
-        
         backButton?.delegate = self
         
         //Instantiate the gamelogic
         gamelogic = Gamelogic()
         gamelogic?.start(level: Gamelogic.Level.easy)
+        gamelogic?.maxTime = 20
         
         //SETUP THE CARDSPRITES
         displayingCards = [CardSprite]()

@@ -15,14 +15,14 @@ import SpriteKit
 class MediumScene : Scene {
     
     override func didMove(to view: SKView) {
-        maxTime = 60
-        super.didMove(to: view)
         
+        super.didMove(to: view)
         backButton?.delegate = self
         
         //Instantiate the gamelogic
         gamelogic = Gamelogic()
         gamelogic?.start(level: Gamelogic.Level.medium)
+        gamelogic?.maxTime = 60
         
         //SETUP THE CARDSPRITES
         displayingCards = [CardSprite]()

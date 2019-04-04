@@ -25,6 +25,7 @@
 		2A8F38662216ED30000C47AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8F38642216ED30000C47AC /* LaunchScreen.storyboard */; };
 		2AD8660B223A845E000FE245 /* TimKid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8660A223A845E000FE245 /* TimKid.ttf */; };
 		2AD8660D223A927F000FE245 /* Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8660C223A927F000FE245 /* Toggle.swift */; };
+		BC97292022564C72003898E5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97291F22564C72003898E5 /* GameInfo.swift */; };
 		BC9F32B02243ECB300281683 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F32AF2243ECB300281683 /* Scene.swift */; };
 		BC9F32B22243EEFD00281683 /* CardSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F32B12243EEFD00281683 /* CardSprite.swift */; };
 		BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F32B32243F3C000281683 /* LeaderboardsScene.swift */; };
@@ -52,6 +53,7 @@
 		2A8F38672216ED30000C47AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AD8660A223A845E000FE245 /* TimKid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TimKid.ttf; sourceTree = "<group>"; };
 		2AD8660C223A927F000FE245 /* Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle.swift; sourceTree = "<group>"; };
+		BC97291F22564C72003898E5 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		BC9F32AF2243ECB300281683 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		BC9F32B12243EEFD00281683 /* CardSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSprite.swift; sourceTree = "<group>"; };
 		BC9F32B32243F3C000281683 /* LeaderboardsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardsScene.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				2A20D2A3224E541E00FBB63D /* Preferences.swift */,
 				2A5DE0672243C6900011F5D5 /* Common.swift */,
+				BC97291F22564C72003898E5 /* GameInfo.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				2A8722FB223BDEF8006C0C7D /* EasyScene.swift in Sources */,
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,
 				2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */,
+				BC97292022564C72003898E5 /* GameInfo.swift in Sources */,
 				2A5DE06D2243CAD70011F5D5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

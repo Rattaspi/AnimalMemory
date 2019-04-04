@@ -12,7 +12,7 @@ import GameplayKit
 
 class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {    
     
-    func backToMainMenu(sender: Scene) {
+    func backToMainMenu(sender: SKScene) {
         if let view = self.view as? SKView{
             let scene = MainMenuScene(size: view.frame.size)
             scene.scaleMode = .aspectFill
@@ -21,10 +21,11 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         }
     }
     
-    func goToGameOver(sender: Scene) {
+    func goToGameOver(sender: SKScene, gamelogic: Gamelogic) {
         if let view = self.view as? SKView{
             let scene = GameoverScene(size: view.frame.size)
             scene.scaleMode = .aspectFill
+            scene.defineScores(streak: gamelogic.matchStreak, attempts: gamelogic.attempts, score: gamelogic.points, bonus: gamelogic.bonusScore)
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
         }
@@ -75,7 +76,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
            
-            let scene = MainMenuScene(size: view.frame.size)
+            let scene = GameoverScene(size: view.frame.size)
             scene.changeSceneDelegate = self
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill

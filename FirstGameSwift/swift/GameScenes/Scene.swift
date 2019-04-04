@@ -9,15 +9,15 @@
 import SpriteKit
 
 protocol SceneDelegate: class {
-    func backToMainMenu(sender: Scene)
-    func goToGameOver(sender: Scene)
+    func backToMainMenu(sender: SKScene)
+    func goToGameOver(sender: SKScene, gamelogic: Gamelogic)
 }
 
 class Scene: SKScene, ButtonDelegate {
     weak var changeSceneDelegate : SceneDelegate?
     weak var gameoverDelegate: SceneDelegate?
     
-    public var easyText : SKLabelNode?
+    var easyText : SKLabelNode?
     var placeholderText: String?
     
     var displayingCards: [CardSprite]?
@@ -33,19 +33,9 @@ class Scene: SKScene, ButtonDelegate {
     //Some scene setup info
     let scoreFontSize: CGFloat = 23
     
-    //In game info
-    var maxTime: Int = -1
-    var initialTime: CGFloat = -1
-    var currentGameTime: CGFloat = 0
-    
-    var currentScore: Int = 0
-    
     override func didMove(to view: SKView) {        
         //BACKGROUND
-        let background = SKSpriteNode(imageNamed: "MainMenu_bg")
-        background.position = view.center
-        background.scale(to: CGSize(width: self.frame.width * background.frame.width / background.frame.height, height: self.frame.height))
-        addChild(background)
+        Common.setupBackground(scene: self)
         
         //placeholder screen title
         easyText = SKLabelNode(text: placeholderText)
@@ -56,11 +46,11 @@ class Scene: SKScene, ButtonDelegate {
             addChild(easyText)
         }
         
-        //placeholder back button
+        //back button
         backButton = Button(imageNamed: "MainMenu_button")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.1)
-            backButton.scaleAspectRatio(width: self.frame.width * 0.3)
+            backButton.position = CGPoint(x: self.frame.width * 0.155, y: self.frame.height * 0.03)
+            backButton.scaleAspectRatio(width: self.frame.width * 0.25)
             backButton.isUserInteractionEnabled = true
             
             addChild(backButton)
@@ -110,28 +100,29 @@ class Scene: SKScene, ButtonDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        //Check the win condition from gamelogic
-        if let win = gamelogic?.checkWin() {
+        //Gamelogic update
+        gamelogic?.update(currentTime)
+        
+        //Check the win condition from gamelogic and
+        //do change the scene if the game is finished
+        if let win = gamelogic?.win {
             if(win){
                 let sequence = SKAction.sequence([
                     SKAction.wait(forDuration: 0.5),
                     SKAction.run {
-                        self.gameoverDelegate?.goToGameOver(sender: self)
+                        if let gamelogic = self.gamelogic{
+                            self.gameoverDelegate?.goToGameOver(sender: self, gamelogic: gamelogic)
+                        }
                     }
                     ])
                 run(sequence)
             }
         }
         
-        //Calculate the current time
-        if(initialTime < 0){
-            initialTime = CGFloat(currentTime)
-        }
-        currentGameTime = floor(CGFloat(currentTime) - initialTime)
-        let timeToPrint = maxTime - Int(currentGameTime) < 0 ? 0 : maxTime - Int(currentGameTime)
-        
         //Update labels
-        bonusLabel?.text = String(timeToPrint)
+        if let bonusTime = gamelogic?.bonusTime{
+            bonusLabel?.text = String(bonusTime)
+        }
         if let points = gamelogic?.points{
             scoreLabel?.text = String(points)
         }
