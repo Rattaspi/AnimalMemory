@@ -62,7 +62,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             audioIcon.scale(to: CGSize(width: 52, height: 52))
             addChild(audioIcon)
             
-            audioIcon.muted = false
+            audioIcon.on = false
             audioIcon.delegate = self
             audioIcon.isUserInteractionEnabled = true
         }
@@ -139,13 +139,13 @@ class MainMenuScene: SKScene, ButtonDelegate {
     
     func changeAudioSprite(){
         if let audioButton = audioButton {
-            if let muted = audioButton.muted{
+            if let muted = audioButton.on{
                 if(muted){
-                    audioButton.muted = false
+                    audioButton.on = false
                     audioButton.texture = audioIcon1
                 }
                 else{
-                    audioButton.muted = true
+                    audioButton.on = true
                     audioButton.texture = audioIcon2
                 }
             }

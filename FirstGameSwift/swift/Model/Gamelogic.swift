@@ -13,7 +13,6 @@ import SpriteKit
 
 class Gamelogic: CardBehavior {
    
-    
     enum Level: Int {case easy = 8, medium = 16, hard = 30};
     
     var cards = [Card]()
@@ -24,11 +23,12 @@ class Gamelogic: CardBehavior {
     var revealedCard: CardSprite?
     var points = 0
     var goal: Int? //The matches you need to win the game
-    var currentMatches: Int? //How many matches have you made in the current level
+    var currentMatches: Int = 0 //How many matches have you made in the current level
     
     func start(level: Level){
         self.level = level
         self.currentMatches = 0
+        self.points = 0
         //CREATE THE CARDS
         let _cardSufx = cardSufx.shuffled()
         for i in 0..<level.rawValue/2{
@@ -40,8 +40,8 @@ class Gamelogic: CardBehavior {
     }
     
     func checkWin() -> Bool {
-        if let currentMatches = self.currentMatches, let goal = self.goal {
-            let win = currentMatches >= goal
+        if let goal = self.goal {
+            let win = self.currentMatches >= goal
             return win
         }
         else{
@@ -61,7 +61,8 @@ class Gamelogic: CardBehavior {
             if(revealedCard?.card?.textF == card.card?.textF){
                 revealedCard?.card?.state = .matched
                 card.card?.state = .matched
-                self.currentMatches? += 1
+                self.currentMatches += 1
+                self.points += 100
                 
                 revealedCard?.isUserInteractionEnabled = false
                 card.isUserInteractionEnabled = false

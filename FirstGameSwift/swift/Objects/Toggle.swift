@@ -9,5 +9,5 @@
 import SpriteKit
 
 class Toggle : Button{
-    var muted : Bool?
+    var on : Bool?
 }

@@ -13,11 +13,9 @@ import SpriteKit
 //}
 
 class HardScene : Scene {
-    //weak var changeSceneDelegate : HardSceneDelegate?
-    //private var displayingCards: [CardSprite]?
     
     override func didMove(to view: SKView) {
-        
+        maxTime = 90
         super.didMove(to: view)
         
         backButton?.delegate = self

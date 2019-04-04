@@ -15,7 +15,7 @@ import SpriteKit
 class MediumScene : Scene {
     
     override func didMove(to view: SKView) {
-        
+        maxTime = 60
         super.didMove(to: view)
         
         backButton?.delegate = self

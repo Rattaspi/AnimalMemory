@@ -8,15 +8,10 @@
 
 import SpriteKit
 
-//protocol EasySceneDelegate : class {
-//    func backToMainMenu(sender: EasyScene)
-//}
-
 class EasyScene : Scene {
     
     override func didMove(to view: SKView) {
-        //placeholderText = "EASY SCENE"
-        
+        maxTime = 20
         super.didMove(to: view)
         
         backButton?.delegate = self

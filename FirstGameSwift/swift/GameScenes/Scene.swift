@@ -23,13 +23,22 @@ class Scene: SKScene, ButtonDelegate {
     var displayingCards: [CardSprite]?
     var gamelogic: Gamelogic?
     var backButton: Button?
+    
+    //Score setup properties
     var scoreIcon: SKSpriteNode?
     var scoreLabel: SKLabelNode?
     var bonusIcon: SKSpriteNode?
     var bonusLabel: SKLabelNode?
     
-    //Some scene info
+    //Some scene setup info
     let scoreFontSize: CGFloat = 23
+    
+    //In game info
+    var maxTime: Int = -1
+    var initialTime: CGFloat = -1
+    var currentGameTime: CGFloat = 0
+    
+    var currentScore: Int = 0
     
     override func didMove(to view: SKView) {        
         //BACKGROUND
@@ -68,7 +77,7 @@ class Scene: SKScene, ButtonDelegate {
             addChild(scoreIcon)
         }
         //score label
-        scoreLabel = SKLabelNode(text: "99999")
+        scoreLabel = SKLabelNode(text: "0")
         if let scoreLabel = scoreLabel {
             scoreLabel.position = CGPoint(x: self.frame.width * 0.23, y: self.frame.height * 0.94)
             scoreLabel.verticalAlignmentMode = .center
@@ -112,6 +121,19 @@ class Scene: SKScene, ButtonDelegate {
                     ])
                 run(sequence)
             }
+        }
+        
+        //Calculate the current time
+        if(initialTime < 0){
+            initialTime = CGFloat(currentTime)
+        }
+        currentGameTime = floor(CGFloat(currentTime) - initialTime)
+        let timeToPrint = maxTime - Int(currentGameTime) < 0 ? 0 : maxTime - Int(currentGameTime)
+        
+        //Update labels
+        bonusLabel?.text = String(timeToPrint)
+        if let points = gamelogic?.points{
+            scoreLabel?.text = String(points)
         }
     }
     
