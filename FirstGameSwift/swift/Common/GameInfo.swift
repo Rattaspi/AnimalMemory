@@ -10,4 +10,5 @@ class GameInfo {
     static let fontName: String = "TimKid"
     
     static let timeBonusMultiplier = 50
+    static let pointsPerCard = 100
 }

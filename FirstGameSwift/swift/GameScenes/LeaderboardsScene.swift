@@ -8,32 +8,34 @@
 
 import SpriteKit
 
-protocol LeaderboardSceneDelegate: class {
-    func backToMainMenu(sender: LeaderboardsScene)
-}
-
 class LeaderboardsScene: SKScene, ButtonDelegate {
-    weak var changeSceneDelegate: LeaderboardSceneDelegate?
+    weak var changeSceneDelegate: SceneDelegate?
     
     var backButton: Button?
     var leaderboardTittle: SKLabelNode?
     
     override func didMove(to view: SKView) {
-        //BACKGROUND
-        let background = SKSpriteNode(imageNamed: "MainMenu_bg")
-        background.position = view.center
-        background.scale(to: CGSize(width: self.frame.width * background.frame.width / background.frame.height, height: self.frame.height))
-        addChild(background)
+        //***BACKGROUND***
+        Common.setupBackground(scene: self)
         
-        //BACK BUTTON
+        //***TITLE***
+        leaderboardTittle = SKLabelNode(text: "Highscores")
+        if let leaderboardTittle = leaderboardTittle {
+            leaderboardTittle.fontName = GameInfo.fontName
+            leaderboardTittle.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.8)
+            leaderboardTittle.fontSize = 40
+            addChild(leaderboardTittle)
+        }
+        
+        //***BACK BUTTON***
         backButton = Button(imageNamed: "MainMenu_button")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.9)
-            backButton.scaleAspectRatio(width: self.frame.width * 0.3)
+            backButton.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.2)
+            backButton.scaleAspectRatio(width: self.frame.width * 0.45)
             backButton.isUserInteractionEnabled = true
             
             addChild(backButton)
-            backButton.createButtonText(text: "Atras")
+            backButton.createButtonText(text: "Menu")
             backButton.delegate = self
         }
         

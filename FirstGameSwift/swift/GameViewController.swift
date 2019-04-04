@@ -59,15 +59,12 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         }
     }
     func goToLeaderboards(sender: MainMenuScene) {
-        /*
         if let view = self.view as? SKView {
             let scene = LeaderboardsScene (size: view.frame.size)
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
-            scene.gameoverDelegate = self
         }
-        */
     }
     
     override func viewDidLoad() {
@@ -76,7 +73,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
            
-            let scene = GameoverScene(size: view.frame.size)
+            let scene = LeaderboardsScene(size: view.frame.size)
             scene.changeSceneDelegate = self
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill

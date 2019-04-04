@@ -89,7 +89,12 @@ class Gamelogic: CardBehavior {
                 revealedCard?.card?.state = .matched
                 card.card?.state = .matched
                 self.currentMatches += 1
-                self.points += 100
+                self.points += GameInfo.pointsPerCard
+                self.currentStreak += 1
+                
+                if(checkWin()){
+                    self.matchStreak = self.matchStreak < self.currentStreak ? self.currentStreak : self.matchStreak
+                }
                 
                 revealedCard?.isUserInteractionEnabled = false
                 card.isUserInteractionEnabled = false
@@ -107,7 +112,8 @@ class Gamelogic: CardBehavior {
                 */
                 self.revealedCard?.flip()
                 card.flip()
-                
+                self.matchStreak = self.matchStreak < self.currentStreak ? self.currentStreak : self.matchStreak
+                self.currentStreak = 0
             }
             revealedCard = nil
             attempts += 1
