@@ -78,7 +78,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             leaderboardButton.isUserInteractionEnabled = true
         }
         
-        //BUTTONS
+        //***LEVEL BUTTONS***
         easyButton = Button(imageNamed: "MainMenu_button")
         if let easyButton = easyButton{
             easyButton.scaleAspectRatio(width: self.frame.width * 0.5)
@@ -133,7 +133,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             changeSceneDelegate?.goToHard(sender: self)
         }
         else if (sender == leaderboardButton){
-            print("Go to leaderboards")
+            changeSceneDelegate?.goToLeaderboards(sender: self)
         }
     }
     

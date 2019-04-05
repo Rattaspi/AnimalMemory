@@ -7,13 +7,19 @@
 //
 
 import SpriteKit
+import UIKit
 
-class GameoverScene: SKScene, ButtonDelegate {
+class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     weak var changeSceneDelegate : SceneDelegate?
     
     var backButton: Button?
     var saveButton: Button?
     var title: SKLabelNode?
+    
+    var textField = UITextField()
+    var textLabel = SKLabelNode(text: "Tap me")
+    var textFieldButton = Button(imageNamed: "MainMenu_button")
+    var initialInputFieldPos: CGPoint?
     
     //Score display
     var scores: [Int]?
@@ -38,7 +44,6 @@ class GameoverScene: SKScene, ButtonDelegate {
         
         //***SCORE DISPLAY***
         //labels
-        let placeholderValue: Int = 99999
         let initialPos = CGPoint(x: self.frame.width * 0.11, y: self.frame.height * 0.70)
         let yOffset = self.frame.height * 0.06
         let xPos2 = self.frame.width * 0.9
@@ -95,8 +100,29 @@ class GameoverScene: SKScene, ButtonDelegate {
         
         //Input field to add a name for the highscores
         //https://stackoverflow.com/questions/48896748/how-to-add-uitextfield-to-skscene-spritekit-game
+        textField = UITextField(frame: CGRect(x: 0, y: -200, width: 10, height: 10))
+        view.addSubview(textField)
+        textField.delegate =  self
+        textField.isUserInteractionEnabled = true
+        
+        initialInputFieldPos = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.3)
+        textFieldButton.position = initialInputFieldPos!
+        textFieldButton.createButtonText(text: "Name")
+        textFieldButton.buttonText?.fontSize = 65
+        textFieldButton.alignTextLeft()
+        textFieldButton.isUserInteractionEnabled = true;
+        textFieldButton.delegate = self
+        textFieldButton.scaleAspectRatio(width: self.frame.width * 0.5)
+        addChild(textFieldButton)
+        
+        
         
         Common.addCredits(scene: self)
+    }
+    
+    override func willMove(from view: SKView) {
+        textField.resignFirstResponder()
+        textField.removeFromSuperview()
     }
 
     func defineScores(streak: Int, attempts: Int, score: Int, bonus: Int){
@@ -113,5 +139,35 @@ class GameoverScene: SKScene, ButtonDelegate {
         if(sender == backButton || sender == saveButton){
             changeSceneDelegate?.backToMainMenu(sender: self)
         }
+        else if(sender == textFieldButton){
+            textField.becomeFirstResponder()
+            //TODO: move the text field to avoid being hided by the keyboard
+            textFieldButton.position.y += self.frame.height * 0.2
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //if i click anywhere on the screen the text field
+        //loses focus
+        textField.resignFirstResponder()
+        //TODO: Put the text field in the original position
+        if let initialPos = initialInputFieldPos{
+            textFieldButton.position = initialPos
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string) as String
+        textFieldButton.buttonText?.text = newString
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        //TODO: Put the text field in the original position
+        if let initialPos = initialInputFieldPos{
+            textFieldButton.position = initialPos
+        }
+        return true
     }
 }

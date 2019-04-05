@@ -73,7 +73,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
            
-            let scene = LeaderboardsScene(size: view.frame.size)
+            let scene = GameoverScene(size: view.frame.size)
             scene.changeSceneDelegate = self
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
