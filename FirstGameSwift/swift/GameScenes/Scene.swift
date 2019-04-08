@@ -19,6 +19,8 @@ class Scene: SKScene, ButtonDelegate {
     
     var easyText : SKLabelNode?
     var placeholderText: String?
+    var level: GameInfo?
+    
     
     var displayingCards: [CardSprite]?
     var gamelogic: Gamelogic?
@@ -34,6 +36,8 @@ class Scene: SKScene, ButtonDelegate {
     let scoreFontSize: CGFloat = 23
     
     override func didMove(to view: SKView) {        
+        level = GameInfo.Easy()
+        
         //BACKGROUND
         Common.setupBackground(scene: self)
         
@@ -126,6 +130,10 @@ class Scene: SKScene, ButtonDelegate {
         if let points = gamelogic?.points{
             scoreLabel?.text = String(points)
         }
+    }
+    
+    func checkLevel() {
+       
     }
     
     func onTap(sender: Button) {

@@ -29,6 +29,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     let buttonWidth: CGFloat = 0.35
     
     override func didMove(to view: SKView) {
+        
         //***BACKGROUND***
         Common.setupBackground(scene: self)
         
@@ -141,7 +142,6 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         }
         else if(sender == textFieldButton){
             textField.becomeFirstResponder()
-            //TODO: move the text field to avoid being hided by the keyboard
             textFieldButton.position.y += self.frame.height * 0.2
         }
     }
@@ -150,7 +150,6 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         //if i click anywhere on the screen the text field
         //loses focus
         textField.resignFirstResponder()
-        //TODO: Put the text field in the original position
         if let initialPos = initialInputFieldPos{
             textFieldButton.position = initialPos
         }
@@ -164,7 +163,6 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //TODO: Put the text field in the original position
         if let initialPos = initialInputFieldPos{
             textFieldButton.position = initialPos
         }
