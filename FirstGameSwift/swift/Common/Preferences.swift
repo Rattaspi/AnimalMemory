@@ -28,7 +28,7 @@ class Preferences {
     
     static func getLocalHighscores() -> [String] {
         var info = [String]()
-        info.append(UserDefaults.standard.string(forKey: "LOCAL1_NAME") ?? "")
+        info.append(UserDefaults.standard.string(forKey: k_LOCAL1_NAME) ?? "")
         info.append(UserDefaults.standard.string(forKey: k_LOCAL1_SCORE) ?? "")
     
         info.append(UserDefaults.standard.string(forKey: k_LOCAL2_NAME) ?? "")
