@@ -28,7 +28,7 @@ class Preferences {
     
     static func getLocalHighscores() -> [String] {
         var info = [String]()
-        info.append(UserDefaults.standard.string(forKey: k_LOCAL1_NAME) ?? "")
+        info.append(UserDefaults.standard.string(forKey: "LOCAL1_NAME") ?? "")
         info.append(UserDefaults.standard.string(forKey: k_LOCAL1_SCORE) ?? "")
     
         info.append(UserDefaults.standard.string(forKey: k_LOCAL2_NAME) ?? "")
@@ -74,8 +74,10 @@ class Preferences {
         
         for i in 0..<info.count/2 {
             print(info[i*2])
-            UserDefaults.standard.set("Try", forKey: String("LOCAL\(i)_NAME"))
-            UserDefaults.standard.set(info[i*2 + 1], forKey: String("LOCAL\(i)_SCORE"))
+            let name = info[i*2]
+            let score = info[i*2+1]
+            UserDefaults.standard.set(name, forKey: "LOCAL\(i)_NAME")
+            UserDefaults.standard.set(score, forKey: "LOCAL\(i)_SCORE")
             //assignScore(name: info[i*2], score: info[i*2+1], key1: "LOCAL\(i)_NAME", key2: "LOCAL\(i)_SCORE")
         }
         //UserDefaults.standard.set("BOYE", forKey: k_LOCAL3_NAME)

@@ -71,9 +71,8 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
         let yOffsetScores = self.frame.height * 0.16
         let initialYOffsetScores = self.frame.height * 0.05 //Offset for the score number
-        print("Info from highscores: \(info)")
         for i in 0..<info.count/2 {
-            var text = SKLabelNode(text: "LocalName\(i)")
+            var text = SKLabelNode(text: info[i*2])
             text.position = CGPoint(x: initialPosScores.x, y: initialPosScores.y - yOffsetScores * CGFloat(i))
             text.horizontalAlignmentMode = .left
             text.fontSize = 30
@@ -86,13 +85,13 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             text.fontSize = 20
             addChild(text)
         }
-        print(info)
+        print("Info from highscores: \(info)")
         
         //***BACK BUTTON***
         backButton = Button(imageNamed: "MainMenu_button")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.15)
-            backButton.scaleAspectRatio(width: self.frame.width * 0.45)
+            backButton.position = CGPoint(x: self.frame.width * 0.155, y: self.frame.height * 0.94)
+            backButton.scaleAspectRatio(width: self.frame.width * 0.25)
             backButton.isUserInteractionEnabled = true
             
             addChild(backButton)
