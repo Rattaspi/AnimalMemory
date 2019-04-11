@@ -10,6 +10,8 @@ import CoreGraphics
 
 class GameInfo {
     static let fontName: String = "TimKid"
+    static let bgName: String = "MainMenu_bg"
+    static let bgBlurName: String = "blur_bg"
     
     static let timeBonusMultiplier = 50
     static let pointsPerCard = 100

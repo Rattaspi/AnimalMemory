@@ -17,7 +17,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
     
     override func didMove(to view: SKView) {
         //***BACKGROUND***
-        Common.setupBackground(scene: self)
+        Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
         
         //***TITLE***
         let leaderboardTittle = SKLabelNode(text: "Highscores")
@@ -54,21 +54,51 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         
         //***SCORES***
         //Medals
-        let initialPos = CGPoint(x: self.frame.width * 0.18, y: self.frame.height * 0.62)
-        let yOffset = self.frame.height * 0.16
+        let initialPosMedals = CGPoint(x: self.frame.width * 0.18, y: self.frame.height * 0.62)
+        let yOffsetMedals = self.frame.height * 0.16
         let medalSize:CGFloat = self.frame.width * 0.18
         for i in 0..<3 {
             let medal = SKSpriteNode(imageNamed: "medal"+String(i+1))
-            medal.position = CGPoint(x: initialPos.x, y: initialPos.y - yOffset * CGFloat(i))
+            medal.position = CGPoint(x: initialPosMedals.x, y: initialPosMedals.y - yOffsetMedals * CGFloat(i))
             medal.size = CGSize(width: medalSize, height: medalSize)
             addChild(medal)
             print(i)
+        }
+        //Names
+        //get the info
+        var info = Preferences.getLocalHighscores()
+        var names = [String]()
+        names.append("Local 1")
+        names.append("Local 2")
+        names.append("Local 3")
+        var scores = [String]()
+        scores.append("99999")
+        scores.append("99999")
+        scores.append("99999")
+        //display the info
+        print("string length: \(info.count)")
+        let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.64)
+        let yOffsetScores = self.frame.height * 0.16
+        let initialYOffsetScores = self.frame.height * 0.05 //Offset for the score number
+        for i in 0..<6 where i % 2 == 0 {
+            var text = SKLabelNode(text: info[i])
+            text.position = CGPoint(x: initialPosScores.x, y: initialPosScores.y - yOffsetScores * CGFloat(i))
+            text.horizontalAlignmentMode = .left
+            text.fontSize = 30
+            text.fontName = GameInfo.fontName
+            addChild(text)
+            
+            text = SKLabelNode(text: info[i+1])
+            text.position = CGPoint(x: initialPosScores.x, y: initialPosScores.y - initialYOffsetScores - (yOffsetScores * CGFloat(i)))
+            text.horizontalAlignmentMode = .left
+            text.fontSize = 20
+            addChild(text)
         }
         
         //***BACK BUTTON***
         backButton = Button(imageNamed: "MainMenu_button")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.2)
+            backButton.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.15)
             backButton.scaleAspectRatio(width: self.frame.width * 0.45)
             backButton.isUserInteractionEnabled = true
             

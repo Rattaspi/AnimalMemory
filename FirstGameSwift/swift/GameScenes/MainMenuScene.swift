@@ -36,7 +36,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
         backgroundColor = SKColor.purple
         
         //SET THE LAYER1 BACKGROUND
-        bg1 = SKSpriteNode(imageNamed: "MainMenu_bg")
+        bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
         if let bg1 = bg1 {
             bg1.position = view.center
             bg1.scale(to: CGSize(width: self.frame.width * bg1.frame.width / bg1.frame.height, height: self.frame.height))
@@ -53,7 +53,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             addChild(title)
         }
         
-        //SET THE AUDIO ICON
+        //***AUDIO ICON***
         audioIcon1 = SKTexture(imageNamed: "MainMenu_speakeraudio")
         audioIcon2 = SKTexture(imageNamed: "MainMenu_speakernoaudio")
         audioButton = Toggle(imageNamed: "MainMenu_speakeraudio")
@@ -67,11 +67,11 @@ class MainMenuScene: SKScene, ButtonDelegate {
             audioIcon.isUserInteractionEnabled = true
         }
         
-        //SET THE LEADERBOARDS BUTTON
+        //***LEADERBOARDS BUTTON***
         leaderboardButton = Button(imageNamed: "MainMenu_highscore")
         if let leaderboardButton = leaderboardButton {
-            leaderboardButton.position = CGPoint(x: self.frame.width * 0.16, y: self.frame.height * 0.08)
-            leaderboardButton.scale(to: CGSize(width: 64, height: 64))
+            leaderboardButton.position = CGPoint(x: self.frame.width * 0.13, y: self.frame.height * 0.92)
+            leaderboardButton.scale(to: CGSize(width: 52, height: 52))
             
             addChild(leaderboardButton)
             leaderboardButton.delegate = self

@@ -17,8 +17,8 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     var title: SKLabelNode?
     
     var textField = UITextField()
-    var textLabel = SKLabelNode(text: "Tap me")
-    var textFieldButton = Button(imageNamed: "MainMenu_button")
+    var placeholderText = "Instert name"
+    var textFieldButton = Button(imageNamed: "input_field")
     var initialInputFieldPos: CGPoint?
     
     //Score display
@@ -31,7 +31,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     override func didMove(to view: SKView) {
         
         //***BACKGROUND***
-        Common.setupBackground(scene: self)
+        Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
         
         //***SCREEN TITLE***
         title = SKLabelNode(text: "You won!")
@@ -108,8 +108,8 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         
         initialInputFieldPos = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.3)
         textFieldButton.position = initialInputFieldPos!
-        textFieldButton.createButtonText(text: "Name")
-        textFieldButton.buttonText?.fontSize = 65
+        textFieldButton.createButtonText(text: "Insert name") //11 letters max
+        textFieldButton.buttonText?.fontSize = 60
         textFieldButton.alignTextLeft()
         textFieldButton.isUserInteractionEnabled = true;
         textFieldButton.delegate = self
@@ -137,12 +137,19 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     }
     
     func onTap(sender: Button) {
-        if(sender == backButton || sender == saveButton){
+        if(sender == backButton ){
             changeSceneDelegate?.backToMainMenu(sender: self)
+        }
+        else if(sender == saveButton){
+            if (sender.buttonText?.text != placeholderText) {
+                
+            }
         }
         else if(sender == textFieldButton){
             textField.becomeFirstResponder()
-            textFieldButton.position.y += self.frame.height * 0.2
+            if let initialPos = initialInputFieldPos{
+                textFieldButton.position.y = initialPos.y + self.frame.height * 0.2
+            }
         }
     }
     
@@ -157,7 +164,10 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string) as String
-        textFieldButton.buttonText?.text = newString
+        
+        let newStr = String(newString.prefix(11))
+        
+        textFieldButton.buttonText?.text = newStr
         return true
     }
     

@@ -39,7 +39,7 @@ class Scene: SKScene, ButtonDelegate {
         level = GameInfo.Easy()
         
         //BACKGROUND
-        Common.setupBackground(scene: self)
+        Common.setupBackground(scene: self, imageNamed: GameInfo.bgName)
         
         //placeholder screen title
         easyText = SKLabelNode(text: placeholderText)
@@ -53,7 +53,7 @@ class Scene: SKScene, ButtonDelegate {
         //back button
         backButton = Button(imageNamed: "MainMenu_button")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.155, y: self.frame.height * 0.03)
+            backButton.position = CGPoint(x: self.frame.width * 0.155, y: self.frame.height * 0.94)
             backButton.scaleAspectRatio(width: self.frame.width * 0.25)
             backButton.isUserInteractionEnabled = true
             
@@ -65,7 +65,7 @@ class Scene: SKScene, ButtonDelegate {
         //score icon
         scoreIcon = SKSpriteNode(imageNamed: "score")
         if let scoreIcon = scoreIcon {
-            scoreIcon.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.95)
+            scoreIcon.position = CGPoint(x: self.frame.width * 0.45, y: self.frame.height * 0.95)
             scoreIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
             
             addChild(scoreIcon)
@@ -73,7 +73,7 @@ class Scene: SKScene, ButtonDelegate {
         //score label
         scoreLabel = SKLabelNode(text: "0")
         if let scoreLabel = scoreLabel {
-            scoreLabel.position = CGPoint(x: self.frame.width * 0.23, y: self.frame.height * 0.94)
+            scoreLabel.position = CGPoint(x: self.frame.width * 0.53, y: self.frame.height * 0.94)
             scoreLabel.verticalAlignmentMode = .center
             scoreLabel.horizontalAlignmentMode = .left
             scoreLabel.fontSize = scoreFontSize
@@ -85,14 +85,14 @@ class Scene: SKScene, ButtonDelegate {
         //bonus icon
         bonusIcon = SKSpriteNode(imageNamed: "medal1")
         if let bonusIcon = bonusIcon{
-            bonusIcon.position = CGPoint(x: self.frame.width * 0.65, y: self.frame.height * 0.94)
+            bonusIcon.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.94)
             bonusIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
             addChild(bonusIcon)
         }
         //bonus label
         bonusLabel = SKLabelNode(text: "999")
         if let bonusLabel = bonusLabel {
-            bonusLabel.position = CGPoint(x: self.frame.width * 0.72, y: self.frame.height * 0.94)
+            bonusLabel.position = CGPoint(x: self.frame.width * 0.82, y: self.frame.height * 0.94)
             bonusLabel.verticalAlignmentMode = .center
             bonusLabel.horizontalAlignmentMode = .left
             bonusLabel.fontSize = scoreFontSize

@@ -56,6 +56,6 @@ class Button: SKSpriteNode {
     
     func alignTextLeft(){
         buttonText?.horizontalAlignmentMode = .left
-        buttonText?.position.x -= (self.frame.width / 2) - (self.frame.width * 0.1)
+        buttonText?.position.x -= (self.frame.width / 2) - (self.frame.width * 0.05)
     }
 }

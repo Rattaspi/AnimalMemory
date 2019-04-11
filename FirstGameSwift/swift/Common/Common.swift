@@ -17,8 +17,8 @@ class Common {
         scene.addChild(credits)
     }
     
-    static func setupBackground(scene: SKScene){
-        let background = SKSpriteNode(imageNamed: "MainMenu_bg")
+    static func setupBackground(scene: SKScene, imageNamed: String){
+        let background = SKSpriteNode(imageNamed: imageNamed)
         if let view = scene.view{
             background.position = view.center
         }
