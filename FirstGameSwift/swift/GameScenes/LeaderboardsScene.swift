@@ -85,7 +85,6 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             text.fontSize = 20
             addChild(text)
         }
-        print("Info from highscores: \(info)")
         
         //***BACK BUTTON***
         backButton = Button(imageNamed: "back_arrow")

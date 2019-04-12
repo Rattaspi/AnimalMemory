@@ -70,54 +70,18 @@ class Preferences {
     }
     
     static func updateAllHighscores(info: [String]){
-        print("Array to update: \(info)")
-        
         for i in 0..<info.count/2 {
             print(info[i*2])
             let name: String  = info[i*2]
             let score: String = info[i*2+1]
             UserDefaults.standard.set(String(name), forKey: "LOCAL\(i+1)_NAME")
             UserDefaults.standard.set(String(score), forKey: "LOCAL\(i+1)_SCORE")
-            //assignScore(name: info[i*2], score: info[i*2+1], key1: "LOCAL\(i)_NAME", key2: "LOCAL\(i)_SCORE")
         }
-        //UserDefaults.standard.set("BOYE", forKey: k_LOCAL3_NAME)
-        print("After update: \(getLocalHighscores())")
-    
     }
-    
-    private static func assignScore(name: String, score: String, key1: String, key2: String){
-        UserDefaults.standard.set(name, forKey: key1)
-        UserDefaults.standard.set(score, forKey: key2)
-    }
-    
     /*
-    static func saveLocalScore(name: String, score: String){
-        let scores = getLocalHighscores()
-        for i in 0..<scores.count/2 {
-            if(scores[i*2 + 1] == ""){
-                assignScore(name: name, score: score, key1: "k_LOCAL\(i)_NAME", key2: "k_LOCAL\(i)_SCORE")
-            }
-            else {
-                if(Int(score)! > Int(scores[i*2 + 1])!){
-                    
-                }
-            }
-        }
-    }
-    
-    private static func shiftAndAssign(info: [String], name: String, score: String, index: Int){
-        for i in index..
-    }
-    
-    private static func assignScore(name: String, score: String, key1: String, key2: String){
-        UserDefaults.standard.set(name, forKey: key1)
-        UserDefaults.standard.set(score, forKey: key2)
-        
-    }
-     */
- 
     static func toggleSound(){
         let soundOn = isSoundOn()
         UserDefaults.standard.set(!soundOn, forKey: k_SOUND_ON)
     }
+     */
 }
