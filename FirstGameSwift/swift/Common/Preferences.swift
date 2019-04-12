@@ -71,7 +71,6 @@ class Preferences {
     
     static func updateAllHighscores(info: [String]){
         for i in 0..<info.count/2 {
-            print(info[i*2])
             let name: String  = info[i*2]
             let score: String = info[i*2+1]
             UserDefaults.standard.set(String(name), forKey: "LOCAL\(i+1)_NAME")

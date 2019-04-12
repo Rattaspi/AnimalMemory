@@ -24,7 +24,10 @@ class Button: SKSpriteNode {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let action = SKAction.scale(by: 1.0/0.85, duration: 0.1)
-        run(action)
+        let sequence = SKAction.sequence([SKAction.playSoundFileNamed("sfx_click.wav", waitForCompletion: false),
+                                          action])
+        
+        run(sequence)
         
         if let touch = touches.first, let parent = parent{
             if frame.contains(touch.location(in: parent)){

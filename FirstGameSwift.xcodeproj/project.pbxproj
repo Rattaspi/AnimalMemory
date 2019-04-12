@@ -26,6 +26,7 @@
 		2A9571BA2260B94E0047826A /* sfx_error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571B92260B94E0047826A /* sfx_error.wav */; };
 		2A9571BC2260B95E0047826A /* sfx_match.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571BB2260B95E0047826A /* sfx_match.wav */; };
 		2A9571BE2260BE3A0047826A /* sfx_flip3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571BD2260BE3A0047826A /* sfx_flip3.wav */; };
+		2A9571C02260C6350047826A /* sfx_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571BF2260C6350047826A /* sfx_click.wav */; };
 		2AD8660B223A845E000FE245 /* TimKid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8660A223A845E000FE245 /* TimKid.ttf */; };
 		2AD8660D223A927F000FE245 /* Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8660C223A927F000FE245 /* Toggle.swift */; };
 		2AF34468225F739B00A9B200 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF34467225F739B00A9B200 /* AudioManager.swift */; };
@@ -58,6 +59,7 @@
 		2A9571B92260B94E0047826A /* sfx_error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_error.wav; sourceTree = "<group>"; };
 		2A9571BB2260B95E0047826A /* sfx_match.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_match.wav; sourceTree = "<group>"; };
 		2A9571BD2260BE3A0047826A /* sfx_flip3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_flip3.wav; sourceTree = "<group>"; };
+		2A9571BF2260C6350047826A /* sfx_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_click.wav; sourceTree = "<group>"; };
 		2AD8660A223A845E000FE245 /* TimKid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TimKid.ttf; sourceTree = "<group>"; };
 		2AD8660C223A927F000FE245 /* Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle.swift; sourceTree = "<group>"; };
 		2AF34467225F739B00A9B200 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		2A9571B62260B6EC0047826A /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				2A9571BF2260C6350047826A /* sfx_click.wav */,
 				2A9571B92260B94E0047826A /* sfx_error.wav */,
 				2A9571BB2260B95E0047826A /* sfx_match.wav */,
 				2A9571BD2260BE3A0047826A /* sfx_flip3.wav */,
@@ -253,6 +256,7 @@
 				2A9571BE2260BE3A0047826A /* sfx_flip3.wav in Resources */,
 				2A8F38662216ED30000C47AC /* LaunchScreen.storyboard in Resources */,
 				2A8F385A2216ED2F000C47AC /* Actions.sks in Resources */,
+				2A9571C02260C6350047826A /* sfx_click.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
