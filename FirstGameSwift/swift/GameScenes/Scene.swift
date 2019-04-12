@@ -51,21 +51,20 @@ class Scene: SKScene, ButtonDelegate {
         }
         
         //back button
-        backButton = Button(imageNamed: "MainMenu_button")
+        backButton = Button(imageNamed: "back_arrow")
         if let backButton = backButton {
-            backButton.position = CGPoint(x: self.frame.width * 0.155, y: self.frame.height * 0.94)
-            backButton.scaleAspectRatio(width: self.frame.width * 0.25)
+            backButton.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.height * 0.95)
+            backButton.scaleAspectRatio(width: self.frame.width * 0.1)
             backButton.isUserInteractionEnabled = true
             
             addChild(backButton)
-            backButton.createButtonText(text: "Menu")
         }
         
         //***SCORE***
         //score icon
         scoreIcon = SKSpriteNode(imageNamed: "score")
         if let scoreIcon = scoreIcon {
-            scoreIcon.position = CGPoint(x: self.frame.width * 0.45, y: self.frame.height * 0.95)
+            scoreIcon.position = CGPoint(x: self.frame.width * 0.35, y: self.frame.height * 0.95)
             scoreIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
             
             addChild(scoreIcon)
@@ -73,7 +72,7 @@ class Scene: SKScene, ButtonDelegate {
         //score label
         scoreLabel = SKLabelNode(text: "0")
         if let scoreLabel = scoreLabel {
-            scoreLabel.position = CGPoint(x: self.frame.width * 0.53, y: self.frame.height * 0.94)
+            scoreLabel.position = CGPoint(x: self.frame.width * 0.43, y: self.frame.height * 0.94)
             scoreLabel.verticalAlignmentMode = .center
             scoreLabel.horizontalAlignmentMode = .left
             scoreLabel.fontSize = scoreFontSize
@@ -83,7 +82,7 @@ class Scene: SKScene, ButtonDelegate {
         
         //***BONUS***
         //bonus icon
-        bonusIcon = SKSpriteNode(imageNamed: "medal1")
+        bonusIcon = SKSpriteNode(imageNamed: "bonus")
         if let bonusIcon = bonusIcon{
             bonusIcon.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.94)
             bonusIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))

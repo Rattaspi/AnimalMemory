@@ -74,10 +74,10 @@ class Preferences {
         
         for i in 0..<info.count/2 {
             print(info[i*2])
-            let name = info[i*2]
-            let score = info[i*2+1]
-            UserDefaults.standard.set(name, forKey: "LOCAL\(i)_NAME")
-            UserDefaults.standard.set(score, forKey: "LOCAL\(i)_SCORE")
+            let name: String  = info[i*2]
+            let score: String = info[i*2+1]
+            UserDefaults.standard.set(String(name), forKey: "LOCAL\(i+1)_NAME")
+            UserDefaults.standard.set(String(score), forKey: "LOCAL\(i+1)_SCORE")
             //assignScore(name: info[i*2], score: info[i*2+1], key1: "LOCAL\(i)_NAME", key2: "LOCAL\(i)_SCORE")
         }
         //UserDefaults.standard.set("BOYE", forKey: k_LOCAL3_NAME)
@@ -86,7 +86,6 @@ class Preferences {
     }
     
     private static func assignScore(name: String, score: String, key1: String, key2: String){
-        print("TRYING TO ASIGN")
         UserDefaults.standard.set(name, forKey: key1)
         UserDefaults.standard.set(score, forKey: key2)
     }

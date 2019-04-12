@@ -70,7 +70,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
         //***LEADERBOARDS BUTTON***
         leaderboardButton = Button(imageNamed: "MainMenu_highscore")
         if let leaderboardButton = leaderboardButton {
-            leaderboardButton.position = CGPoint(x: self.frame.width * 0.13, y: self.frame.height * 0.92)
+            leaderboardButton.position = CGPoint(x: self.frame.width * 0.13, y: self.frame.height * 0.93)
             leaderboardButton.scale(to: CGSize(width: 52, height: 52))
             
             addChild(leaderboardButton)

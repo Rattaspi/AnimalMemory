@@ -8,9 +8,6 @@
 
 import SpriteKit
 
-//SKAudioNode
-//SKAction.playSoundFileNamed(<#T##soundFile: String##String#>, waitForCompletion: <#T##Bool#>)
-
 class Gamelogic: CardBehavior {
    
     enum Level: Int {case easy = 8, medium = 16, hard = 30};
@@ -76,10 +73,10 @@ class Gamelogic: CardBehavior {
         }
     }
     
-    
-    //TODO: move the card flip to the scene, gamelogic only has to check if there is a match
     //when a card is flipped this method is called
     func cardFlipped(card: CardSprite) {
+        let revealAudio = SKAction.sequence([SKAction.playSoundFileNamed("sfx_flip3", waitForCompletion: false)])
+        card.run(revealAudio)
         if(revealedCard == nil){
             revealedCard = card
         }
@@ -89,8 +86,10 @@ class Gamelogic: CardBehavior {
                 revealedCard?.card?.state = .matched
                 card.card?.state = .matched
                 self.currentMatches += 1
-                self.points += GameInfo.pointsPerCard
                 self.currentStreak += 1
+                self.points += GameInfo.pointsPerCard * self.currentStreak
+                let matchSfx = SKAction.sequence([SKAction.playSoundFileNamed("sfx_match.wav", waitForCompletion: false)])
+                card.run(matchSfx)
                 
                 if(checkWin()){
                     self.matchStreak = self.matchStreak < self.currentStreak ? self.currentStreak : self.matchStreak
@@ -100,36 +99,15 @@ class Gamelogic: CardBehavior {
                 card.isUserInteractionEnabled = false
             }
             else {
-                /*
-                let sequence = SKAction.sequence([
-                    SKAction.wait(forDuration: 0.5),
-                    SKAction.run {
-                        self.revealedCard?.flip()
-                        card.flip()
-                    }
-                    ])
-                card.run(sequence)
-                */
                 self.revealedCard?.flip()
                 card.flip()
                 self.matchStreak = self.matchStreak < self.currentStreak ? self.currentStreak : self.matchStreak
                 self.currentStreak = 0
+                let audioSeq = SKAction.sequence([SKAction.playSoundFileNamed("sfx_error", waitForCompletion: false)])
+                card.run(audioSeq)
             }
             revealedCard = nil
             attempts += 1
         }
     }
-    
-    //MAYBE I'LL NEED IT LATER
-    /*
-    func startEasy(){
-        
-    }
-    func startMedium(){
-        
-    }
-    func startHard(){
-        
-    }
-    */
 }

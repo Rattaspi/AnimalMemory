@@ -141,11 +141,13 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
             changeSceneDelegate?.backToMainMenu(sender: self)
         }
         else if(sender == saveButton){
-            if (textFieldButton.buttonText?.text != placeholderText || textFieldButton.buttonText?.text == "") {
-                print(textFieldButton.buttonText?.text)
-                Preferences.saveScore(name: (textFieldButton.buttonText?.text)!, score: scores![4])
-                changeSceneDelegate?.backToMainMenu(sender: self)
+            if let text = textFieldButton.buttonText?.text {
+                if (text != placeholderText || text == "") {
+                    Preferences.saveScore(name: text, score: scores![4])
+                    changeSceneDelegate?.backToMainMenu(sender: self)
+                }
             }
+            
         }
         else if(sender == textFieldButton){
             textField.becomeFirstResponder()
