@@ -73,6 +73,9 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
            
+            //Get the database id
+            GameInfo.dbId = Preferences.getDbId()
+            
             let scene = MainMenuScene(size: view.frame.size)
             scene.changeSceneDelegate = self
             // Set the scale mode to scale to fit the window

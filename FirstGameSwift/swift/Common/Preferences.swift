@@ -7,10 +7,12 @@
 //
 
 import SpriteKit
+import Foundation
 
 class Preferences {
     
     static let k_SOUND_ON = "SOUND_ON"
+    static let k_MY_DB_ID = "DB_ID"
     static let k_LOCAL1_NAME = "LOCAL1_NAME"
     static let k_LOCAL2_NAME = "LOCAL2_NAME"
     static let k_LOCAL3_NAME = "LOCAL3_NAME"
@@ -77,10 +79,19 @@ class Preferences {
             UserDefaults.standard.set(String(score), forKey: "LOCAL\(i+1)_SCORE")
         }
     }
-    /*
-    static func toggleSound(){
-        let soundOn = isSoundOn()
-        UserDefaults.standard.set(!soundOn, forKey: k_SOUND_ON)
+    
+    static func getDbId() -> String {
+        if let _ = UserDefaults.standard.object(forKey: k_MY_DB_ID){
+            print("KEY FOUND")
+            return UserDefaults.standard.string(forKey: k_MY_DB_ID)!
+            
+        }
+        else {
+            let id = UUID().uuidString
+            UserDefaults.standard.set(String(id), forKey: k_MY_DB_ID)
+            print("NO KEY FOUND")
+            return id
+        }
+        
     }
-     */
 }

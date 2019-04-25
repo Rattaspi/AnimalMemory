@@ -9,6 +9,8 @@
 import CoreGraphics
 
 class GameInfo {
+    static var dbId: String = ""
+    
     static let fontName: String = "TimKid"
     static let bgName: String = "MainMenu_bg"
     static let bgBlurName: String = "blur_bg"

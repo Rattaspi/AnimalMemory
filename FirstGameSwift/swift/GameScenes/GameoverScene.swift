@@ -144,6 +144,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
             if let text = textFieldButton.buttonText?.text {
                 if (text != placeholderText && text != "") {
                     Preferences.saveScore(name: text, score: scores![4])
+                    DBManager.UpdateInfo(score: scores![scores!.count-1], username: text, userId: GameInfo.dbId)
                     changeSceneDelegate?.backToMainMenu(sender: self)
                 }
             }

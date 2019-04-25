@@ -33,12 +33,8 @@ class MainMenuScene: SKScene, ButtonDelegate {
     private var leaderboardButton : Button?
     private var title : SKLabelNode?
     
-    let db = Firestore.firestore()
-    
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.purple
-        
-        debugDB()
         
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
@@ -158,6 +154,8 @@ class MainMenuScene: SKScene, ButtonDelegate {
     }
     
     func debugDB(){
-        DBManager.writeUserScore(name: "Test", score: -10)
+        //DBManager.writeUserScore(name: "Test", score: -10)
+        //DBManager.getUserScore()
+        //DBManager.UpdateInfo(score: 2, username: "Test", userId: GameInfo.dbId)
     }
 }
