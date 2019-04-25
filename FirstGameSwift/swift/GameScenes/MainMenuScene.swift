@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import Firebase
 
 protocol MainMenuDelegate : class{
     func goToEasy(sender: MainMenuScene)
@@ -31,6 +32,8 @@ class MainMenuScene: SKScene, ButtonDelegate {
     private var hardButton : Button?
     private var leaderboardButton : Button?
     private var title : SKLabelNode?
+    
+    let db = Firestore.firestore()
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.purple
@@ -155,6 +158,6 @@ class MainMenuScene: SKScene, ButtonDelegate {
     }
     
     func debugDB(){
-        
+        DBManager.writeUserScore(name: "Test", score: -10)
     }
 }

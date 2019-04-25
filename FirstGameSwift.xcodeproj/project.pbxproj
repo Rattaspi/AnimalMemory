@@ -12,6 +12,7 @@
 		2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20D2A3224E541E00FBB63D /* Preferences.swift */; };
 		2A4388A522314E3C002C98E8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4388A422314E3C002C98E8 /* Button.swift */; };
 		2A5294EC2271DD030069893E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A5294EB2271DD030069893E /* GoogleService-Info.plist */; };
+		2A5294EE2271E1970069893E /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5294ED2271E1970069893E /* DBManager.swift */; };
 		2A5DE0682243C6900011F5D5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE0672243C6900011F5D5 /* Common.swift */; };
 		2A5DE06B2243CA920011F5D5 /* Gamelogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE06A2243CA920011F5D5 /* Gamelogic.swift */; };
 		2A5DE06D2243CAD70011F5D5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE06C2243CAD70011F5D5 /* Card.swift */; };
@@ -45,6 +46,7 @@
 		2A20D2A3224E541E00FBB63D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2A4388A422314E3C002C98E8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2A5294EB2271DD030069893E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A5294ED2271E1970069893E /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		2A5DE0672243C6900011F5D5 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		2A5DE06A2243CA920011F5D5 /* Gamelogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamelogic.swift; sourceTree = "<group>"; };
 		2A5DE06C2243CAD70011F5D5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				2A5DE0672243C6900011F5D5 /* Common.swift */,
 				BC97291F22564C72003898E5 /* GameInfo.swift */,
 				2AF34467225F739B00A9B200 /* AudioManager.swift */,
+				2A5294ED2271E1970069893E /* DBManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -324,14 +327,24 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FirstGameSwift/Pods-FirstGameSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +376,7 @@
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,
 				2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */,
 				BC97292022564C72003898E5 /* GameInfo.swift in Sources */,
+				2A5294EE2271E1970069893E /* DBManager.swift in Sources */,
 				2A5DE06D2243CAD70011F5D5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,5 +7,6 @@ target 'FirstGameSwift' do
 
   # Pods for FirstGameSwift
 pod 'Firebase/Core'
+pod 'Firebase/Firestore'
 
 end
