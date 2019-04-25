@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>315751699692-m6vapolqb2mfadak0doesn1pk25md99c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.315751699692-m6vapolqb2mfadak0doesn1pk25md99c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyASLcgqgBd_o6oJksZglUrUoH3CdMjp4zI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>315751699692</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cat.enti.AnimalMemory</string>
+	<key>PROJECT_ID</key>
+	<string>animalshelter-a8c37</string>
+	<key>STORAGE_BUCKET</key>
+	<string>animalshelter-a8c37.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:315751699692:ios:16a39d183abdd334</string>
+	<key>DATABASE_URL</key>
+	<string>https://animalshelter-a8c37.firebaseio.com</string>
+</dict>
+</plist>

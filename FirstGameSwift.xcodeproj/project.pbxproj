@@ -11,6 +11,7 @@
 		2A16E6FB223C064B007F1C26 /* HardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16E6FA223C064B007F1C26 /* HardScene.swift */; };
 		2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20D2A3224E541E00FBB63D /* Preferences.swift */; };
 		2A4388A522314E3C002C98E8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4388A422314E3C002C98E8 /* Button.swift */; };
+		2A5294EC2271DD030069893E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A5294EB2271DD030069893E /* GoogleService-Info.plist */; };
 		2A5DE0682243C6900011F5D5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE0672243C6900011F5D5 /* Common.swift */; };
 		2A5DE06B2243CA920011F5D5 /* Gamelogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE06A2243CA920011F5D5 /* Gamelogic.swift */; };
 		2A5DE06D2243CAD70011F5D5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE06C2243CAD70011F5D5 /* Card.swift */; };
@@ -43,6 +44,7 @@
 		2A16E6FA223C064B007F1C26 /* HardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardScene.swift; sourceTree = "<group>"; };
 		2A20D2A3224E541E00FBB63D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2A4388A422314E3C002C98E8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		2A5294EB2271DD030069893E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A5DE0672243C6900011F5D5 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		2A5DE06A2243CA920011F5D5 /* Gamelogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamelogic.swift; sourceTree = "<group>"; };
 		2A5DE06C2243CAD70011F5D5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				2A8F38592216ED2F000C47AC /* Actions.sks */,
 				2A8F385F2216ED2F000C47AC /* Main.storyboard */,
 				2A8F38622216ED30000C47AC /* Assets.xcassets */,
+				2A5294EB2271DD030069893E /* GoogleService-Info.plist */,
 				2A8F38642216ED30000C47AC /* LaunchScreen.storyboard */,
 				2A8F38672216ED30000C47AC /* Info.plist */,
 			);
@@ -202,7 +205,6 @@
 				B4CF07178582D3A92D479384 /* Pods-FirstGameSwift.debug.xcconfig */,
 				5843AD21FEF038D2726D3D2E /* Pods-FirstGameSwift.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -282,6 +284,7 @@
 				2A8F38632216ED30000C47AC /* Assets.xcassets in Resources */,
 				2A9571BE2260BE3A0047826A /* sfx_flip3.wav in Resources */,
 				2A8F38662216ED30000C47AC /* LaunchScreen.storyboard in Resources */,
+				2A5294EC2271DD030069893E /* GoogleService-Info.plist in Resources */,
 				2A8F385A2216ED2F000C47AC /* Actions.sks in Resources */,
 				2A9571C02260C6350047826A /* sfx_click.wav in Resources */,
 			);
@@ -513,7 +516,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cat.enti.FirstGameSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = cat.enti.AnimalMemory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,7 +534,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cat.enti.FirstGameSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = cat.enti.AnimalMemory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
