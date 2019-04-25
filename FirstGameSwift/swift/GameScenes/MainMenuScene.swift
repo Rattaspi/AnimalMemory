@@ -35,6 +35,8 @@ class MainMenuScene: SKScene, ButtonDelegate {
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.purple
         
+        debugDB()
+        
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
         if let bg1 = bg1 {
@@ -150,5 +152,9 @@ class MainMenuScene: SKScene, ButtonDelegate {
                 }
             }
         }
+    }
+    
+    func debugDB(){
+        
     }
 }
