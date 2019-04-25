@@ -82,14 +82,12 @@ class Preferences {
     
     static func getDbId() -> String {
         if let _ = UserDefaults.standard.object(forKey: k_MY_DB_ID){
-            print("KEY FOUND")
             return UserDefaults.standard.string(forKey: k_MY_DB_ID)!
             
         }
         else {
             let id = UUID().uuidString
             UserDefaults.standard.set(String(id), forKey: k_MY_DB_ID)
-            print("NO KEY FOUND")
             return id
         }
         

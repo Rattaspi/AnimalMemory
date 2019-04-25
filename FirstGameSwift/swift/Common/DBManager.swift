@@ -38,6 +38,32 @@ class DBManager {
                 
     }
     
+    static func getHighscores() -> [String] {
+        let db = Firestore.firestore()
+        
+        var info = [String]()
+        db.collection(k_COLLECTION_SCORES).order(by: "score", descending: true).limit(to: 3)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    snapshot?.documents.forEach({
+                        if let score = $0.data()["score"]{
+                            info.append("\(score)")
+        
+                        }
+                        //if let score = $0.data()[0]{
+                            //info.append(String(score as! NSString))
+                        //}
+                    })
+                    
+                }
+        }
+        //ERROR-> This is returning before the info is processed
+        return info
+    }
+    
     static func UpdateInfo(score: Int, username: String?, userId: String){
         let db = Firestore.firestore()
         

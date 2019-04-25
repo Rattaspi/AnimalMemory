@@ -73,7 +73,7 @@
 		BC97291F22564C72003898E5 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		BC9F32AF2243ECB300281683 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		BC9F32B12243EEFD00281683 /* CardSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSprite.swift; sourceTree = "<group>"; };
-		BC9F32B32243F3C000281683 /* LeaderboardsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardsScene.swift; sourceTree = "<group>"; };
+		BC9F32B32243F3C000281683 /* LeaderboardsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardsScene.swift; sourceTree = "<group>"; usesTabs = 1; };
 		BCD83E68224D2C4A00B2F8DF /* GameoverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameoverScene.swift; sourceTree = "<group>"; };
 		DCD07106848B62C8E6E04A78 /* Pods_FirstGameSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstGameSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */

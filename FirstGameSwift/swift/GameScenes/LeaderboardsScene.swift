@@ -15,6 +15,10 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
     var localButton: Button?
     var globalButton: Button?
     
+    //true-> display local
+    //false-> display global
+    var local = true;
+    
     override func didMove(to view: SKView) {
         //***BACKGROUND***
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
@@ -66,7 +70,9 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         }
         //Names
         //get the info
+		var globalInfo = DBManager.getHighscores()
         var info = Preferences.getLocalHighscores()
+		print("\(globalInfo.count): \(globalInfo)")
         //display the info
         let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
         let yOffsetScores = self.frame.height * 0.16
