@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 import Firebase
 
+
 protocol MainMenuDelegate : class{
     func goToEasy(sender: MainMenuScene)
     func goToMedium(sender: MainMenuScene)

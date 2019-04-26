@@ -11,6 +11,7 @@
 		2A16E6FB223C064B007F1C26 /* HardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16E6FA223C064B007F1C26 /* HardScene.swift */; };
 		2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20D2A3224E541E00FBB63D /* Preferences.swift */; };
 		2A4388A522314E3C002C98E8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4388A422314E3C002C98E8 /* Button.swift */; };
+		2A50956F2273321B008461F6 /* AdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A50956E2273321B008461F6 /* AdBanner.swift */; };
 		2A5294EC2271DD030069893E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A5294EB2271DD030069893E /* GoogleService-Info.plist */; };
 		2A5294EE2271E1970069893E /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5294ED2271E1970069893E /* DBManager.swift */; };
 		2A5DE0682243C6900011F5D5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DE0672243C6900011F5D5 /* Common.swift */; };
@@ -45,6 +46,7 @@
 		2A16E6FA223C064B007F1C26 /* HardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardScene.swift; sourceTree = "<group>"; };
 		2A20D2A3224E541E00FBB63D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		2A4388A422314E3C002C98E8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		2A50956E2273321B008461F6 /* AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBanner.swift; sourceTree = "<group>"; };
 		2A5294EB2271DD030069893E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A5294ED2271E1970069893E /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		2A5DE0672243C6900011F5D5 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				BC97291F22564C72003898E5 /* GameInfo.swift */,
 				2AF34467225F739B00A9B200 /* AudioManager.swift */,
 				2A5294ED2271E1970069893E /* DBManager.swift */,
+				2A50956E2273321B008461F6 /* AdBanner.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				2A16E6FB223C064B007F1C26 /* HardScene.swift in Sources */,
 				2A4388A522314E3C002C98E8 /* Button.swift in Sources */,
 				2A5DE0682243C6900011F5D5 /* Common.swift in Sources */,
+				2A50956F2273321B008461F6 /* AdBanner.swift in Sources */,
 				BCD83E69224D2C4A00B2F8DF /* GameoverScene.swift in Sources */,
 				2A8722FB223BDEF8006C0C7D /* EasyScene.swift in Sources */,
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,

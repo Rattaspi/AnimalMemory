@@ -13,6 +13,9 @@ class DBManager {
     //Unique identifier
     //UUID().uuidString
     
+    //import FirebaseAnalytics
+    //Analytics.logEvent("nextLevel", parameters: ["levelNumber: 2])
+    
     static let k_COLLECTION_SCORES = "scores"
     
     static func writeUserScore(name: String, score: Int){
@@ -27,7 +30,7 @@ class DBManager {
         let db = Firestore.firestore()
         
         db.collection(k_COLLECTION_SCORES).whereField("score", isGreaterThan: 0)
-            .getDocuments{(snapshot,error) in
+            .getDocuments{ (snapshot, error) in
                     if let error = error {
                         print(error)
                     }
@@ -38,7 +41,7 @@ class DBManager {
                 
     }
     
-    static func getHighscores() -> [String] {
+    static func getHighscores(block: @escaping (String) -> Void) {
         let db = Firestore.firestore()
         
         var info = [String]()
@@ -49,8 +52,11 @@ class DBManager {
                 }
                 else {
                     snapshot?.documents.forEach({
-                        if let score = $0.data()["score"]{
-                            info.append("\(score)")
+                        if let score = $0.data()["score"], let name = $0.data()["username"]{
+                            block("\(score)")
+                           
+                            
+                            //info.append("\(score)")
         
                         }
                         //if let score = $0.data()[0]{
@@ -61,7 +67,6 @@ class DBManager {
                 }
         }
         //ERROR-> This is returning before the info is processed
-        return info
     }
     
     static func UpdateInfo(score: Int, username: String?, userId: String){

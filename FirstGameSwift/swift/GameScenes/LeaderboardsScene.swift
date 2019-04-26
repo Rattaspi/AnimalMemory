@@ -18,6 +18,8 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
     //true-> display local
     //false-> display global
     var local = true;
+	
+	var globalInfo = [String]()
     
     override func didMove(to view: SKView) {
         //***BACKGROUND***
@@ -70,9 +72,12 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         }
         //Names
         //get the info
-		var globalInfo = DBManager.getHighscores()
+		
+		DBManager.getHighscores { scores in
+			//globalInfo.append(scores)
+		}
         var info = Preferences.getLocalHighscores()
-		print("\(globalInfo.count): \(globalInfo)")
+		//print("\(globalInfo.count): \(globalInfo)")
         //display the info
         let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
         let yOffsetScores = self.frame.height * 0.16
@@ -105,6 +110,10 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         
         Common.addCredits(scene: self)
     }
+	
+	override func update(_ currentTime: TimeInterval) {
+		print(globalInfo)
+	}
     
     func onTap(sender: Button) {
         if(sender == backButton){
