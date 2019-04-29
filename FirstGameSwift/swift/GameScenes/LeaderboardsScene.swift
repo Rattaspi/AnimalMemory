@@ -70,14 +70,23 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             addChild(medal)
             
         }
-        //Names
-        //get the info
-		
+        //***NAMES AND SCORES
+        //get the info database info
 		DBManager.getHighscores { scores in
-			//globalInfo.append(scores)
+			for i in 0..<6 {
+				if(i < scores.count){
+					self.globalInfo.append(scores[i])
+				}
+				else{
+					self.globalInfo.append("")
+				}
+			}
+			//self.globalInfo = scores
+			print(self.globalInfo)
 		}
+		//get the local storage info
         var info = Preferences.getLocalHighscores()
-		//print("\(globalInfo.count): \(globalInfo)")
+		
         //display the info
         let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
         let yOffsetScores = self.frame.height * 0.16
@@ -112,12 +121,27 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
     }
 	
 	override func update(_ currentTime: TimeInterval) {
-		print(globalInfo)
+		
 	}
     
     func onTap(sender: Button) {
         if(sender == backButton){
             changeSceneDelegate?.backToMainMenu(sender: self)
         }
+		else if(sender == localButton){
+			local = true
+		}
+		else if(sender == globalButton){
+			local = false
+		}
     }
+	
+	func updateDisplayedScores() {
+		if(local){
+			
+		}
+		else {
+			
+		}
+	}
 }

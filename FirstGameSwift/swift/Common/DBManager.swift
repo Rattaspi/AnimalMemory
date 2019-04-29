@@ -41,7 +41,7 @@ class DBManager {
                 
     }
     
-    static func getHighscores(block: @escaping (String) -> Void) {
+    static func getHighscores(block: @escaping ([String] ) -> Void) {
         let db = Firestore.firestore()
         
         var info = [String]()
@@ -53,20 +53,14 @@ class DBManager {
                 else {
                     snapshot?.documents.forEach({
                         if let score = $0.data()["score"], let name = $0.data()["username"]{
-                            block("\(score)")
-                           
-                            
-                            //info.append("\(score)")
-        
+                            info.append("\(name)")
+                            info.append("\(score)")
                         }
-                        //if let score = $0.data()[0]{
-                            //info.append(String(score as! NSString))
-                        //}
                     })
-                    
+                    block(info)
                 }
         }
-        //ERROR-> This is returning before the info is processed
+        
     }
     
     static func UpdateInfo(score: Int, username: String?, userId: String){
