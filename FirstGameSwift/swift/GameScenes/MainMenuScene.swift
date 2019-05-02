@@ -35,7 +35,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
     private var title : SKLabelNode?
     
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor.purple
+        AnalyticsManager.debug()
         
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
@@ -152,11 +152,5 @@ class MainMenuScene: SKScene, ButtonDelegate {
                 }
             }
         }
-    }
-    
-    func debugDB(){
-        //DBManager.writeUserScore(name: "Test", score: -10)
-        //DBManager.getUserScore()
-        //DBManager.UpdateInfo(score: 2, username: "Test", userId: GameInfo.dbId)
     }
 }

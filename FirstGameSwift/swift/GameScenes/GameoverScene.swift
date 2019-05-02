@@ -100,7 +100,6 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         saveButton?.delegate = self
         
         //Input field to add a name for the highscores
-        //https://stackoverflow.com/questions/48896748/how-to-add-uitextfield-to-skscene-spritekit-game
         textField = UITextField(frame: CGRect(x: 0, y: -200, width: 10, height: 10))
         view.addSubview(textField)
         textField.delegate =  self

@@ -15,6 +15,7 @@ import GoogleMobileAds
 class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {    
     
     var bannerView: GADBannerView!
+    public var intersticial: GADInterstitial!
     
     func backToMainMenu(sender: SKScene) {
         if let view = self.view as? SKView{
@@ -29,45 +30,46 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         if let view = self.view as? SKView{
             let scene = GameoverScene(size: view.frame.size)
             scene.scaleMode = .aspectFill
+                        scene.changeSceneDelegate = self
             scene.defineScores(streak: gamelogic.matchStreak, attempts: gamelogic.attempts, score: gamelogic.points, bonus: gamelogic.bonusScore)
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
         }
     }
     
     func goToEasy(sender: MainMenuScene) {
         if let view = self.view as? SKView {
             let scene = EasyScene (size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }
     func goToMedium(sender: MainMenuScene){
         if let view = self.view as? SKView {
             let scene = MediumScene (size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }
     func goToHard(sender: MainMenuScene){
         if let view = self.view as? SKView {
             let scene = HardScene (size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }
     func goToLeaderboards(sender: MainMenuScene) {
         if let view = self.view as? SKView {
             let scene = LeaderboardsScene (size: view.frame.size)
+            scene.changeSceneDelegate = self
+            scene.uiViewController = self
             scene.scaleMode = .aspectFill
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
         }
     }
     
@@ -84,6 +86,12 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         bannerView.load(GADRequest())
         //bannerView.removeFromSuperview
         */
+        
+        //My add key does not work: ca-app-pub-3986547639162462/9966646591
+        //Example key (it kinda works): ca-app-pub-3940256099942544/4411468910
+        intersticial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        intersticial.load(request)
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -105,6 +113,10 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             view.showsFPS = false
             view.showsNodeCount = false
         }
+    }
+    
+    func presentInterstitial(){
+        intersticial.present(fromRootViewController: self)
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView){

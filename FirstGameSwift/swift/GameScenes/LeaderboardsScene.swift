@@ -6,10 +6,14 @@
 //  Copyright © 2019 Alex Canut. All rights reserved.
 //
 
+import UIKit
 import SpriteKit
+import GoogleMobileAds
 
 class LeaderboardsScene: SKScene, ButtonDelegate {
     weak var changeSceneDelegate: SceneDelegate?
+	
+	//var intersticial: GADInterstitial!
     
     var backButton: Button?
     var localButton: Button?
@@ -22,6 +26,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 	var info = [String]()
 	var globalInfo = [String]()
 	var displayingInfo = [SKLabelNode]()
+	var uiViewController: GameViewController!
     
     override func didMove(to view: SKView) {
         //***BACKGROUND***
@@ -83,8 +88,6 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 					self.globalInfo.append("")
 				}
 			}
-			//self.globalInfo = scores
-			print(self.globalInfo)
 		}
 		//get the local storage info
         info = Preferences.getLocalHighscores()
@@ -122,6 +125,9 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         }
         
         Common.addCredits(scene: self)
+		
+		uiViewController.presentInterstitial()
+		
     }
 	
 	override func update(_ currentTime: TimeInterval) {
@@ -146,6 +152,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 		else if(sender == globalButton){
 			local = false
 			updateDisplayedScores()
+			
 		}
     }
 	

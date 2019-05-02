@@ -26,6 +26,7 @@
 		2A8F38612216ED2F000C47AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8F385F2216ED2F000C47AC /* Main.storyboard */; };
 		2A8F38632216ED30000C47AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A8F38622216ED30000C47AC /* Assets.xcassets */; };
 		2A8F38662216ED30000C47AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8F38642216ED30000C47AC /* LaunchScreen.storyboard */; };
+		2A90ABCC227B2446001A6990 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A90ABCB227B2446001A6990 /* AnalyticsManager.swift */; };
 		2A9571BA2260B94E0047826A /* sfx_error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571B92260B94E0047826A /* sfx_error.wav */; };
 		2A9571BC2260B95E0047826A /* sfx_match.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571BB2260B95E0047826A /* sfx_match.wav */; };
 		2A9571BE2260BE3A0047826A /* sfx_flip3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A9571BD2260BE3A0047826A /* sfx_flip3.wav */; };
@@ -63,6 +64,7 @@
 		2A8F38622216ED30000C47AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A8F38652216ED30000C47AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A8F38672216ED30000C47AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A90ABCB227B2446001A6990 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		2A9571B92260B94E0047826A /* sfx_error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_error.wav; sourceTree = "<group>"; };
 		2A9571BB2260B95E0047826A /* sfx_match.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_match.wav; sourceTree = "<group>"; };
 		2A9571BD2260BE3A0047826A /* sfx_flip3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_flip3.wav; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				2AF34467225F739B00A9B200 /* AudioManager.swift */,
 				2A5294ED2271E1970069893E /* DBManager.swift */,
 				2A50956E2273321B008461F6 /* AdBanner.swift */,
+				2A90ABCB227B2446001A6990 /* AnalyticsManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				2A50956F2273321B008461F6 /* AdBanner.swift in Sources */,
 				BCD83E69224D2C4A00B2F8DF /* GameoverScene.swift in Sources */,
 				2A8722FB223BDEF8006C0C7D /* EasyScene.swift in Sources */,
+				2A90ABCC227B2446001A6990 /* AnalyticsManager.swift in Sources */,
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,
 				2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */,
 				BC97292022564C72003898E5 /* GameInfo.swift in Sources */,

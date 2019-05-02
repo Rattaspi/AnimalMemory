@@ -12,6 +12,8 @@ class Gamelogic: CardBehavior {
    
     enum Level: Int {case easy = 8, medium = 16, hard = 30};
     
+    let analytics = AnalyticsManager()
+    
     var cards = [Card]()
     var level: Level?
     let cardSufx: [Int] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
@@ -60,6 +62,10 @@ class Gamelogic: CardBehavior {
         
         //Check the win condition
         self.win = checkWin()
+        
+        if(win){
+            analytics.saveBonusAnalytic(level: level!, time: bonusTime)
+        }
     }
     
     func checkWin() -> Bool {
