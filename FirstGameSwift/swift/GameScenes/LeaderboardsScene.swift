@@ -19,7 +19,9 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
     //false-> display global
     var local = true;
 	
+	var info = [String]()
 	var globalInfo = [String]()
+	var displayingInfo = [SKLabelNode]()
     
     override func didMove(to view: SKView) {
         //***BACKGROUND***
@@ -85,7 +87,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 			print(self.globalInfo)
 		}
 		//get the local storage info
-        var info = Preferences.getLocalHighscores()
+        info = Preferences.getLocalHighscores()
 		
         //display the info
         let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
@@ -98,12 +100,14 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             text.fontSize = 30
             text.fontName = GameInfo.fontName
             addChild(text)
+			displayingInfo.append(text)
             
             text = SKLabelNode(text: info[i*2 + 1])
             text.position = CGPoint(x: initialPosScores.x, y: initialPosScores.y - initialYOffsetScores - (yOffsetScores * CGFloat(i)))
             text.horizontalAlignmentMode = .left
             text.fontSize = 20
             addChild(text)
+			displayingInfo.append(text)
         }
         
         //***BACK BUTTON***
@@ -121,7 +125,14 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
     }
 	
 	override func update(_ currentTime: TimeInterval) {
-		
+		if(local){
+			localButton?.scaleAspectRatio(width: self.frame.width * 0.4)
+			globalButton?.scaleAspectRatio(width: self.frame.width * 0.3)
+		}
+		else{
+			globalButton?.scaleAspectRatio(width: self.frame.width * 0.4)
+			localButton?.scaleAspectRatio(width: self.frame.width * 0.3)
+		}
 	}
     
     func onTap(sender: Button) {
@@ -130,18 +141,24 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         }
 		else if(sender == localButton){
 			local = true
+			updateDisplayedScores()
 		}
 		else if(sender == globalButton){
 			local = false
+			updateDisplayedScores()
 		}
     }
 	
 	func updateDisplayedScores() {
 		if(local){
-			
+			for i in 0..<displayingInfo.count {
+				displayingInfo[i].text = info[i]
+			}
 		}
 		else {
-			
+			for i in 0..<displayingInfo.count {
+				displayingInfo[i].text = globalInfo[i]
+			}
 		}
 	}
 }

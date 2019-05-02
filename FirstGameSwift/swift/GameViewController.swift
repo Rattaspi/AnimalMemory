@@ -74,6 +74,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         //BANNER
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
@@ -82,6 +83,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         //bannerView.removeFromSuperview
+        */
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
