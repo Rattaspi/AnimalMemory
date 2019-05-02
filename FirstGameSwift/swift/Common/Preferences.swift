@@ -28,6 +28,10 @@ class Preferences {
         return true
     }
     
+    static func saveSoundState(_ b : Bool){
+        UserDefaults.standard.set(b, forKey: k_SOUND_ON)
+    }
+    
     static func getLocalHighscores() -> [String] {
         var info = [String]()
         info.append(UserDefaults.standard.string(forKey: k_LOCAL1_NAME) ?? "")

@@ -13,7 +13,7 @@ import GoogleMobileAds
 class LeaderboardsScene: SKScene, ButtonDelegate {
     weak var changeSceneDelegate: SceneDelegate?
 	
-	//var intersticial: GADInterstitial!
+	let analytics = AnalyticsManager()
     
     var backButton: Button?
     var localButton: Button?
@@ -29,7 +29,9 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 	var uiViewController: GameViewController!
     
     override func didMove(to view: SKView) {
-        //***BACKGROUND***
+		analytics.openSceneEvent(sceneName: "leaderboards_scene")
+		
+		//***BACKGROUND***
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
         
         //***TITLE***

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Alex Canut. All rights reserved.
 //
 
+import UIKit
 import SpriteKit
 
 protocol SceneDelegate: class {
@@ -16,8 +17,10 @@ protocol SceneDelegate: class {
 class Scene: SKScene, ButtonDelegate {
     weak var changeSceneDelegate : SceneDelegate?
     weak var gameoverDelegate: SceneDelegate?
+    var vc: UIViewController!
     
-    var easyText : SKLabelNode?
+    let analytics = AnalyticsManager()
+    
     var placeholderText: String?
     var level: GameInfo?
     
@@ -40,15 +43,6 @@ class Scene: SKScene, ButtonDelegate {
         
         //BACKGROUND
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgName)
-        
-        //placeholder screen title
-        easyText = SKLabelNode(text: placeholderText)
-        if let easyText = easyText {
-            easyText.position = CGPoint (x: self.frame.width * 0.5, y: self.frame.height * 0.5)
-            easyText.fontSize = 40
-            easyText.fontName = "TimKid"
-            addChild(easyText)
-        }
         
         //back button
         backButton = Button(imageNamed: "back_arrow")
@@ -131,8 +125,18 @@ class Scene: SKScene, ButtonDelegate {
         }
     }
     
-    func checkLevel() {
-       
+    func errorPrevention(_ scene: Scene){
+        var popup = UIAlertController(title: "Give up?", message: "All the progress will be lost", preferredStyle: UIAlertController.Style.alert)
+        
+        popup.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            //TODO go back to the menu
+        }))
+        
+        popup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
+        vc.present(popup, animated: true, completion: nil)
     }
     
     func onTap(sender: Button) {

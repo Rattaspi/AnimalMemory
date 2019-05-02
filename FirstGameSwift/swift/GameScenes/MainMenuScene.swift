@@ -22,6 +22,8 @@ class MainMenuScene: SKScene, ButtonDelegate {
     
     public weak var changeSceneDelegate : MainMenuDelegate?
     
+    let analytics = AnalyticsManager()
+    
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     private var bg1 : SKSpriteNode?
@@ -35,7 +37,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
     private var title : SKLabelNode?
     
     override func didMove(to view: SKView) {
-        AnalyticsManager.debug()
+        //AnalyticsManager.debug()
         
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
@@ -64,7 +66,11 @@ class MainMenuScene: SKScene, ButtonDelegate {
             audioIcon.scale(to: CGSize(width: 52, height: 52))
             addChild(audioIcon)
             
-            audioIcon.on = false
+            audioIcon.on = Preferences.isSoundOn()
+            AudioManager.globalSoundOn = audioIcon.on
+            if(!audioIcon.on!){
+                audioIcon.texture = audioIcon2
+            }
             audioIcon.delegate = self
             audioIcon.isUserInteractionEnabled = true
         }
@@ -144,12 +150,14 @@ class MainMenuScene: SKScene, ButtonDelegate {
             if let muted = audioButton.on{
                 if(muted){
                     audioButton.on = false
-                    audioButton.texture = audioIcon1
+                    audioButton.texture = audioIcon2
                 }
                 else{
                     audioButton.on = true
-                    audioButton.texture = audioIcon2
+                    audioButton.texture = audioIcon1
                 }
+                Preferences.saveSoundState(audioButton.on!)
+                AudioManager.globalSoundOn = audioButton.on
             }
         }
     }
