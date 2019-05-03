@@ -8,12 +8,14 @@
 
 import AVFoundation
 
-class AudioController {
+class AudioManager {
+    static var globalSoundOn: Bool?
+    
     let player = AVPlayer(url: Bundle.main.url(forResource: "NOMBRE DEL ARCHIVO EN EL PROYECTO.mp3", withExtension: nil)!)
     
-    private static let sharedAudioController = AudioController()
+    private static let sharedAudioController = AudioManager()
     
-    static var shared: AudioController {
+    static var shared: AudioManager {
         return sharedAudioController
     }
     

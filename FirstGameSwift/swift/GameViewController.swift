@@ -42,6 +42,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
             scene.scaleMode = .aspectFill
+            scene.vc = self
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }
@@ -51,6 +52,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
             scene.scaleMode = .aspectFill
+            scene.vc = self
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }
@@ -60,6 +62,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
             scene.scaleMode = .aspectFill
+            scene.vc = self
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }

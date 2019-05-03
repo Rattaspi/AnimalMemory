@@ -14,6 +14,8 @@ class EasyScene : Scene {
         super.didMove(to: view)
         backButton?.delegate = self
         
+        analytics.openSceneEvent(sceneName: "easy_scene")
+        
         //Instantiate the gamelogic
         gamelogic = Gamelogic()
         gamelogic?.start(level: Gamelogic.Level.easy)
@@ -58,9 +60,12 @@ class EasyScene : Scene {
     
     override func onTap(sender: Button) {
         if(sender == backButton){
-            changeSceneDelegate?.backToMainMenu(sender: self)
+            errorPrevention(self)
         }
     }
     
+    func backToMainMenu(){
+        changeSceneDelegate?.backToMainMenu(sender: self)
+    }
     
 }

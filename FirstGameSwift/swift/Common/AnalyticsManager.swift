@@ -22,6 +22,10 @@ class AnalyticsManager {
         }
     }
     
+    func openSceneEvent(sceneName: String){
+        Analytics.logEvent("open_\(sceneName)", parameters: [:])
+    }
+    
     static func debug(){
         print("sending analytic")
         Analytics.logEvent("TEST", parameters: ["Test" : 2 as NSObject])

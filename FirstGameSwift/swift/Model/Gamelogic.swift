@@ -81,8 +81,10 @@ class Gamelogic: CardBehavior {
     
     //when a card is flipped this method is called
     func cardFlipped(card: CardSprite) {
-        let revealAudio = SKAction.sequence([SKAction.playSoundFileNamed("sfx_flip3", waitForCompletion: false)])
-        card.run(revealAudio)
+        if(AudioManager.globalSoundOn!){
+            let revealAudio = SKAction.sequence([SKAction.playSoundFileNamed("sfx_flip3", waitForCompletion: false)])
+            card.run(revealAudio)
+        }
         if(revealedCard == nil){
             revealedCard = card
         }
@@ -94,8 +96,10 @@ class Gamelogic: CardBehavior {
                 self.currentMatches += 1
                 self.currentStreak += 1
                 self.points += GameInfo.pointsPerCard * self.currentStreak
-                let matchSfx = SKAction.sequence([SKAction.playSoundFileNamed("sfx_match.wav", waitForCompletion: false)])
-                card.run(matchSfx)
+                if(AudioManager.globalSoundOn!){
+                    let matchSfx = SKAction.sequence([SKAction.playSoundFileNamed("sfx_match.wav", waitForCompletion: false)])
+                    card.run(matchSfx)
+                }
                 
                 if(checkWin()){
                     self.matchStreak = self.matchStreak < self.currentStreak ? self.currentStreak : self.matchStreak
@@ -109,8 +113,10 @@ class Gamelogic: CardBehavior {
                 card.flip()
                 self.matchStreak = self.matchStreak < self.currentStreak ? self.currentStreak : self.matchStreak
                 self.currentStreak = 0
-                let audioSeq = SKAction.sequence([SKAction.playSoundFileNamed("sfx_error", waitForCompletion: false)])
-                card.run(audioSeq)
+                if(AudioManager.globalSoundOn!){
+                    let audioSeq = SKAction.sequence([SKAction.playSoundFileNamed("sfx_error", waitForCompletion: false)])
+                    card.run(audioSeq)
+                }
             }
             revealedCard = nil
             attempts += 1

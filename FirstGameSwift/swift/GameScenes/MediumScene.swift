@@ -18,6 +18,7 @@ class MediumScene : Scene {
         
         super.didMove(to: view)
         backButton?.delegate = self
+        analytics.openSceneEvent(sceneName: "medium_scene")
         
         //Instantiate the gamelogic
         gamelogic = Gamelogic()
