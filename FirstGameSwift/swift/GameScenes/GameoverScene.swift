@@ -12,6 +12,8 @@ import UIKit
 class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     weak var changeSceneDelegate : SceneDelegate?
     
+    let analytics = AnalyticsManager()
+    
     var backButton: Button?
     var saveButton: Button?
     var title: SKLabelNode?
@@ -20,6 +22,8 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     var placeholderText = "Instert name"
     var textFieldButton = Button(imageNamed: "input_field")
     var initialInputFieldPos: CGPoint?
+    
+    var levelFrom: String!
     
     //Score display
     var scores: [Int]?
@@ -138,12 +142,14 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     func onTap(sender: Button) {
         if(sender == backButton ){
             changeSceneDelegate?.backToMainMenu(sender: self)
+            analytics.isScoreSaved(true, level: levelFrom)
         }
         else if(sender == saveButton){
             if let text = textFieldButton.buttonText?.text {
                 if (text != placeholderText && text != "") {
                     Preferences.saveScore(name: text, score: scores![4])
                     DBManager.UpdateInfo(score: scores![scores!.count-1], username: text, userId: GameInfo.dbId)
+                    analytics.isScoreSaved(true, level: levelFrom)
                     changeSceneDelegate?.backToMainMenu(sender: self)
                 }
             }

@@ -11,7 +11,7 @@ import SpriteKit
 
 protocol SceneDelegate: class {
     func backToMainMenu(sender: SKScene)
-    func goToGameOver(sender: SKScene, gamelogic: Gamelogic)
+    func goToGameOver(sender: SKScene, gamelogic: Gamelogic, level: String)
 }
 
 class Scene: SKScene, ButtonDelegate {
@@ -108,7 +108,18 @@ class Scene: SKScene, ButtonDelegate {
                     SKAction.wait(forDuration: 0.5),
                     SKAction.run {
                         if let gamelogic = self.gamelogic{
-                            self.gameoverDelegate?.goToGameOver(sender: self, gamelogic: gamelogic)
+                            var level: String!
+                            switch(gamelogic.level!){
+                            case .easy:
+                                level = "easy"
+                            case .medium:
+                                level = "medium"
+                            case .hard:
+                                level = "hard"
+                            
+                            }
+                            
+                            self.gameoverDelegate?.goToGameOver(sender: self, gamelogic: gamelogic, level: level)
                         }
                     }
                     ])
@@ -123,20 +134,6 @@ class Scene: SKScene, ButtonDelegate {
         if let points = gamelogic?.points{
             scoreLabel?.text = String(points)
         }
-    }
-    
-    func errorPrevention(_ scene: Scene){
-        var popup = UIAlertController(title: "Give up?", message: "All the progress will be lost", preferredStyle: UIAlertController.Style.alert)
-        
-        popup.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            //TODO go back to the menu
-        }))
-        
-        popup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")
-        }))
-        
-        vc.present(popup, animated: true, completion: nil)
     }
     
     func onTap(sender: Button) {

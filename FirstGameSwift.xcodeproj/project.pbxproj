@@ -33,6 +33,9 @@
 		2AD8660B223A845E000FE245 /* TimKid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8660A223A845E000FE245 /* TimKid.ttf */; };
 		2AD8660D223A927F000FE245 /* Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8660C223A927F000FE245 /* Toggle.swift */; };
 		2AF34468225F739B00A9B200 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF34467225F739B00A9B200 /* AudioManager.swift */; };
+		2AFB7DFA2284495A0034B854 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB7DF92284495A0034B854 /* LocalizationManager.swift */; };
+		2AFB7E0022845AA30034B854 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB7E0222845AA30034B854 /* Localizable.strings */; };
+		2AFB7E0622845CD80034B854 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB7E0822845CD80034B854 /* InfoPlist.strings */; };
 		BC97292022564C72003898E5 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC97291F22564C72003898E5 /* GameInfo.swift */; };
 		BC9F32B02243ECB300281683 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F32AF2243ECB300281683 /* Scene.swift */; };
 		BC9F32B22243EEFD00281683 /* CardSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9F32B12243EEFD00281683 /* CardSprite.swift */; };
@@ -70,6 +73,13 @@
 		2AD8660A223A845E000FE245 /* TimKid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TimKid.ttf; sourceTree = "<group>"; };
 		2AD8660C223A927F000FE245 /* Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle.swift; sourceTree = "<group>"; };
 		2AF34467225F739B00A9B200 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		2AFB7DF92284495A0034B854 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		2AFB7DFB228457680034B854 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		2AFB7DFC228457680034B854 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2AFB7E0122845AA30034B854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2AFB7E0322845AAD0034B854 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2AFB7E0722845CD80034B854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2AFB7E0922845CD90034B854 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5843AD21FEF038D2726D3D2E /* Pods-FirstGameSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstGameSwift.release.xcconfig"; path = "Target Support Files/Pods-FirstGameSwift/Pods-FirstGameSwift.release.xcconfig"; sourceTree = "<group>"; };
 		B4CF07178582D3A92D479384 /* Pods-FirstGameSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstGameSwift.debug.xcconfig"; path = "Target Support Files/Pods-FirstGameSwift/Pods-FirstGameSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		BC97291F22564C72003898E5 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
@@ -101,6 +111,7 @@
 				2AF34467225F739B00A9B200 /* AudioManager.swift */,
 				2A5294ED2271E1970069893E /* DBManager.swift */,
 				2A90ABCB227B2446001A6990 /* AnalyticsManager.swift */,
+				2AFB7DF92284495A0034B854 /* LocalizationManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 		2A8F38542216ED2F000C47AC /* FirstGameSwift */ = {
 			isa = PBXGroup;
 			children = (
+				2AFB7DFD22845A0A0034B854 /* strings */,
 				2A9571B62260B6EC0047826A /* audio */,
 				2AD86609223A845E000FE245 /* fonts */,
 				2AD8660E223A92F4000FE245 /* swift */,
@@ -203,6 +215,15 @@
 				2A8F385D2216ED2F000C47AC /* GameViewController.swift */,
 			);
 			path = swift;
+			sourceTree = "<group>";
+		};
+		2AFB7DFD22845A0A0034B854 /* strings */ = {
+			isa = PBXGroup;
+			children = (
+				2AFB7E0222845AA30034B854 /* Localizable.strings */,
+				2AFB7E0822845CD80034B854 /* InfoPlist.strings */,
+			);
+			path = strings;
 			sourceTree = "<group>";
 		};
 		38B74375441EFC29BD78B212 /* Pods */ = {
@@ -266,6 +287,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 2A8F38492216ED2F000C47AC;
 			productRefGroup = 2A8F38532216ED2F000C47AC /* Products */;
@@ -283,7 +305,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AD8660B223A845E000FE245 /* TimKid.ttf in Resources */,
+				2AFB7E0022845AA30034B854 /* Localizable.strings in Resources */,
 				2A8F38612216ED2F000C47AC /* Main.storyboard in Resources */,
+				2AFB7E0622845CD80034B854 /* InfoPlist.strings in Resources */,
 				2A8F38582216ED2F000C47AC /* GameScene.sks in Resources */,
 				2A9571BA2260B94E0047826A /* sfx_error.wav in Resources */,
 				2A9571BC2260B95E0047826A /* sfx_match.wav in Resources */,
@@ -378,6 +402,7 @@
 				2A8722FB223BDEF8006C0C7D /* EasyScene.swift in Sources */,
 				2A90ABCC227B2446001A6990 /* AnalyticsManager.swift in Sources */,
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,
+				2AFB7DFA2284495A0034B854 /* LocalizationManager.swift in Sources */,
 				2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */,
 				BC97292022564C72003898E5 /* GameInfo.swift in Sources */,
 				2A5294EE2271E1970069893E /* DBManager.swift in Sources */,
@@ -392,6 +417,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A8F38602216ED2F000C47AC /* Base */,
+				2AFB7DFB228457680034B854 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -400,8 +426,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A8F38652216ED30000C47AC /* Base */,
+				2AFB7DFC228457680034B854 /* es */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2AFB7E0222845AA30034B854 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AFB7E0122845AA30034B854 /* en */,
+				2AFB7E0322845AAD0034B854 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		2AFB7E0822845CD80034B854 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AFB7E0722845CD80034B854 /* en */,
+				2AFB7E0922845CD90034B854 /* es */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -411,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -472,6 +518,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

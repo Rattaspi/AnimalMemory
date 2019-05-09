@@ -60,7 +60,26 @@ class HardScene : Scene {
     
     override func onTap(sender: Button) {
         if(sender == backButton){
-            changeSceneDelegate?.backToMainMenu(sender: self)
+            errorPrevention()
         }
+    }
+    
+    func backToMainMenu(){
+        changeSceneDelegate?.backToMainMenu(sender: self)
+    }
+    
+    func errorPrevention(){
+        let popup = UIAlertController(title: "Give up?", message: "The level progress will be lost", preferredStyle: UIAlertController.Style.alert)
+        
+        popup.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.analytics.gameCancelled(time: self.gamelogic?.bonusTime ?? 0)
+            self.backToMainMenu()
+        }))
+        
+        popup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        vc.present(popup, animated: true, completion: nil)
     }
 }

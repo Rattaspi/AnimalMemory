@@ -37,8 +37,6 @@ class MainMenuScene: SKScene, ButtonDelegate {
     private var title : SKLabelNode?
     
     override func didMove(to view: SKView) {
-        //AnalyticsManager.debug()
-        
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
         if let bg1 = bg1 {
@@ -51,7 +49,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
         title = SKLabelNode(fontNamed: "TimKid")
         if let title = title{
             title.fontSize = 40
-            title.text = "Animal memory"
+            title.text = NSLocalizedString("Animal memory", comment: "")
             title.fontColor = SKColor(red: 28/255, green: 68/255, blue: 68/255, alpha: 1.0)
             title.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.7 )
             addChild(title)
@@ -95,7 +93,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             
             
             addChild(easyButton)
-            easyButton.createButtonText(text: "Facil")
+            easyButton.createButtonText(text: NSLocalizedString("Easy", comment:""))
             easyButton.delegate = self
             easyButton.isUserInteractionEnabled = true
             
@@ -107,7 +105,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             mediumButton.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.4)
 
             addChild(mediumButton)
-            mediumButton.createButtonText(text: "Normal")
+            mediumButton.createButtonText(text: NSLocalizedString("Normal", comment:""))
             mediumButton.delegate = self
             mediumButton.isUserInteractionEnabled = true
         }

@@ -9,10 +9,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import CoreLocation
 
 import GoogleMobileAds
 
-class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {    
+class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
     
     var bannerView: GADBannerView!
     public var intersticial: GADInterstitial!
@@ -26,12 +27,13 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         }
     }
     
-    func goToGameOver(sender: SKScene, gamelogic: Gamelogic) {
+    func goToGameOver(sender: SKScene, gamelogic: Gamelogic, level: String) {
         if let view = self.view as? SKView{
             let scene = GameoverScene(size: view.frame.size)
             scene.scaleMode = .aspectFill
-                        scene.changeSceneDelegate = self
+            scene.changeSceneDelegate = self
             scene.defineScores(streak: gamelogic.matchStreak, attempts: gamelogic.attempts, score: gamelogic.points, bonus: gamelogic.bonusScore)
+            scene.levelFrom = level
             view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
         }
     }
@@ -76,8 +78,24 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         }
     }
     
+    let locationManager = CLLocationManager()
+    
+    func initLocation(){
+        locationManager.delegate = self
+        if (CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse){
+            locationManager.requestLocation()
+            locationManager.startUpdatingLocation()
+        }
+        else {
+            //permission
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initLocation()
         
         /*
         //BANNER
@@ -153,5 +171,50 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+//Location stuff
+extension GameViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            
+        case .denied:
+            print("denied")
+            
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            
+        default:
+            print("")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let officeLocation = CLLocation(latitude: 51.50998, longitude: -0.1337)
+        if let lastLocation = locations.last {
+            //process the last location
+            print(lastLocation)
+            if(lastLocation.distance(from: officeLocation) < 50){
+                //Do stuff
+                showHello()
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func showHello(){
+        print("User is in the location")
+        
+        let dialog = UIAlertController (title: "Hello!", message: "You found the office!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        dialog.addAction(action)
+        present(dialog, animated: true, completion: nil)
     }
 }
