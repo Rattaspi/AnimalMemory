@@ -69,14 +69,14 @@ class MediumScene : Scene {
     }
     
     func errorPrevention(){
-        let popup = UIAlertController(title: "Give up?", message: "All the progress will be lost", preferredStyle: UIAlertController.Style.alert)
+        let popup = UIAlertController(title: NSLocalizedString("Error title", comment: ""), message: NSLocalizedString("Error message", comment: ""), preferredStyle: UIAlertController.Style.alert)
         
-        popup.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+        popup.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
             self.analytics.gameCancelled(time: self.gamelogic?.bonusTime ?? 0)
             self.backToMainMenu()
         }))
         
-        popup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+        popup.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
             
         }))
         

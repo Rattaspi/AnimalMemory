@@ -10,10 +10,14 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import CoreLocation
+import UserNotifications
 
 import GoogleMobileAds
 
 class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
+    
+    let locationManager = CLLocationManager()
+    let notificationManager = UNUserNotificationCenter.current()
     
     var bannerView: GADBannerView!
     public var intersticial: GADInterstitial!
@@ -78,7 +82,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         }
     }
     
-    let locationManager = CLLocationManager()
+    
     
     func initLocation(){
         locationManager.delegate = self
@@ -92,10 +96,24 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         }
     }
     
+    func initNotifications(){
+        notificationManager.requestAuthorization(options: [.alert]) { (isAccepted, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if (isAccepted){
+                //Do nothing
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initLocation()
+        initNotifications()
         
         /*
         //BANNER
@@ -127,10 +145,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
                 
             // Present the scene
             view.presentScene(scene)
-            
-            
-            //view.ignoresSiblingOrder = true
-            
+
             view.showsFPS = false
             view.showsNodeCount = false
         }
@@ -147,7 +162,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             [NSLayoutConstraint(item: bannerView,
                                 attribute: .bottom,
                                 relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
+                                toItem: view.safeAreaLayoutGuide.bottomAnchor,
                                 attribute: .top,
                                 multiplier: 1,
                                 constant: 0),
@@ -159,6 +174,50 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
                                 multiplier: 1,
                                 constant: 0)
             ])
+    }
+    
+    func showHello(){
+        notificationManager.getNotificationSettings { [weak self](settings) in
+            if settings.authorizationStatus == .authorized {
+                //send notification
+                self?.sendHelloNotification()
+            }
+            else {
+                //show popup
+                self?.showHelloPopup()
+            }
+        }
+        
+    }
+    
+    func sendHelloNotification(){
+        //notification id
+        let identifier = "HelloNotification"
+        
+        //notification content
+        let content = UNMutableNotificationContent()
+        content.title = NSLocalizedString("Notification title", comment: "")
+        content.body = NSLocalizedString("Notification description", comment: "")
+        
+        //notification trigger
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: true)
+        
+        //notification request
+        let notificationRequest = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        //Send
+        notificationManager.add(notificationRequest) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func showHelloPopup(){
+        let dialog = UIAlertController (title: "Hello!", message: "You found the office!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        dialog.addAction(action)
+        present(dialog, animated: true, completion: nil)
     }
 
     override var shouldAutorotate: Bool {
@@ -209,12 +268,5 @@ extension GameViewController: CLLocationManagerDelegate {
         print(error.localizedDescription)
     }
     
-    func showHello(){
-        print("User is in the location")
-        
-        let dialog = UIAlertController (title: "Hello!", message: "You found the office!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        dialog.addAction(action)
-        present(dialog, animated: true, completion: nil)
-    }
+    
 }

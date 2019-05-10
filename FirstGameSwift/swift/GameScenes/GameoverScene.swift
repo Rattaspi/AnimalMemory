@@ -53,11 +53,11 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         let yOffset = self.frame.height * 0.06
         let xPos2 = self.frame.width * 0.9
         let names = [
-            "Match streak",
-            "Attempts",
-            "Score",
-            "Bonus",
-            "Total score"
+            NSLocalizedString("match streak", comment: ""),
+            NSLocalizedString("attempts", comment: ""),
+            NSLocalizedString("score", comment: ""),
+            NSLocalizedString("bonus", comment: ""),
+            NSLocalizedString("total", comment: "")
         ]
         
         for i in 0..<names.count {
@@ -87,7 +87,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
             backButton.isUserInteractionEnabled = true
             
             addChild(backButton)
-            backButton.createButtonText(text: "Menu")
+            backButton.createButtonText(text: NSLocalizedString("menu", comment: ""))
         }
         backButton?.delegate = self
         
@@ -99,7 +99,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
             saveButton.isUserInteractionEnabled = true
             
             addChild(saveButton)
-            saveButton.createButtonText(text: "Save & menu")
+            saveButton.createButtonText(text: NSLocalizedString("save & menu", comment: ""))
         }
         saveButton?.delegate = self
         
@@ -111,7 +111,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         
         initialInputFieldPos = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.3)
         textFieldButton.position = initialInputFieldPos!
-        textFieldButton.createButtonText(text: "Insert name") //11 letters max
+        textFieldButton.createButtonText(text: NSLocalizedString("insert name", comment: "")) //11 letters max
         textFieldButton.buttonText?.fontSize = 60
         textFieldButton.alignTextLeft()
         textFieldButton.isUserInteractionEnabled = true;

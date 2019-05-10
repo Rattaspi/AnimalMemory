@@ -35,7 +35,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
         
         //***TITLE***
-        let leaderboardTittle = SKLabelNode(text: "Highscores")
+        let leaderboardTittle = SKLabelNode(text: NSLocalizedString("Highscores", comment: ""))
         leaderboardTittle.fontName = GameInfo.fontName
         leaderboardTittle.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.85)
         leaderboardTittle.fontSize = 40
@@ -51,7 +51,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             localButton.isUserInteractionEnabled = true
             
             addChild(localButton)
-            localButton.createButtonText(text: "Local")
+            localButton.createButtonText(text: NSLocalizedString("local", comment: ""))
             localButton.delegate = self
         }
         
@@ -63,7 +63,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             globalButton.isUserInteractionEnabled = true
             
             addChild(globalButton)
-            globalButton.createButtonText(text: "Global")
+            globalButton.createButtonText(text: NSLocalizedString("global", comment: ""))
             globalButton.delegate = self
         }
         

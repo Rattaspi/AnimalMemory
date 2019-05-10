@@ -116,7 +116,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
             hardButton.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.3)
             
             addChild(hardButton)
-            hardButton.createButtonText(text: "Dificil")
+            hardButton.createButtonText(text: NSLocalizedString("Hard", comment:""))
             hardButton.delegate = self
             hardButton.isUserInteractionEnabled = true
         }

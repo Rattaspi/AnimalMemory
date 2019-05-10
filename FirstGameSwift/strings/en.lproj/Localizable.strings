@@ -8,3 +8,23 @@
 
 "Animal memory" = "Animal memory";
 "Easy" = "Easy";
+"Normal" = "Normal";
+"Hard" = "Hard";
+"Game by:" = "Game by:";
+"Error title" = "Give up?";
+"Error message" = "All the progress will be lost";
+"Notification title" = "Are you bored? Come to play!";
+"Notification description" = "A fun game is waiting for you";
+"ok" = "Yes";
+"cancel" = "No";
+"Highscores" = "Highscores";
+"local" = "Local";
+"global" = "Global";
+"match streak" = "Match streak";
+"attempts" = "Attempts";
+"score" = "Score";
+"bonus" = "Bonus";
+"total" = "Total score";
+"menu" = "Menu";
+"save & menu" = "Save & menu";
+"insert name" = "Insert name";

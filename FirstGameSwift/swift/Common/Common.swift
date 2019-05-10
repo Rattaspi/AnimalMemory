@@ -10,7 +10,7 @@ import SpriteKit
 
 class Common {    
     static func addCredits(scene : SKScene){
-        let credits = SKLabelNode(text: "Game by: Alex Canut")
+        let credits = SKLabelNode(text: NSLocalizedString("Game by:", comment: "")+" Alex Canut")
         credits.position = CGPoint(x: scene.frame.width * 0.95, y: scene.frame.height * 0.02)
         credits.fontSize = 15
         credits.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right

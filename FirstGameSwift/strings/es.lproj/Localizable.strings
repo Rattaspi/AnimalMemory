@@ -8,3 +8,23 @@
 
 "Animal memory" = "Animal memory";
 "Easy" = "Facil";
+"Normal" = "Normal";
+"Hard" = "Dificil";
+"Game by:" = "Hecho por:";
+"Error title" = "Salir?";
+"Error message" = "Perderás todo el progreso";
+"Notification title" = "¿Estas aburrido? ¡Ven a jugar!";
+"Notification description" = "Una divertida partida te está esperando";
+"ok" = "Si";
+"cancel" = "No";
+"Highscores" = "Puntuaciones";
+"local" = "Lobal";
+"global" = "Mundial";
+"match streak" = "Mejor racha";
+"attempts" = "Intentos";
+"score" = "Puntuacion";
+"bonus" = "Bonificación";
+"total" = "Puntuación total";
+"menu" = "Menu";
+"save & menu" = "Guardar y volver";
+"insert name" = "Insertar nombre";

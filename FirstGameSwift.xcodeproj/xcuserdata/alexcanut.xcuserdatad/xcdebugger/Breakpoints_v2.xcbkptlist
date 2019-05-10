@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "saveScore(name:score:)"
+            landmarkName = "getLocalHighscores()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstGameSwift/swift/GameScenes/GameoverScene.swift"
-            timestampString = "578581355.564235"
+            timestampString = "579185945.2722239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstGameSwift/swift/GameScenes/GameoverScene.swift"
-            timestampString = "578581355.564275"
+            timestampString = "579185945.272267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
