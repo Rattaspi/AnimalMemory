@@ -10,6 +10,7 @@
 		2A16E6F9223C04DA007F1C26 /* MediumScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16E6F8223C04DA007F1C26 /* MediumScene.swift */; };
 		2A16E6FB223C064B007F1C26 /* HardScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16E6FA223C064B007F1C26 /* HardScene.swift */; };
 		2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20D2A3224E541E00FBB63D /* Preferences.swift */; };
+		2A41E85B228D8B4F0026BC76 /* TiltManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A41E85A228D8B4F0026BC76 /* TiltManager.swift */; };
 		2A4388A522314E3C002C98E8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4388A422314E3C002C98E8 /* Button.swift */; };
 		2A5294EC2271DD030069893E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A5294EB2271DD030069893E /* GoogleService-Info.plist */; };
 		2A5294EE2271E1970069893E /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5294ED2271E1970069893E /* DBManager.swift */; };
@@ -47,6 +48,7 @@
 		2A16E6F8223C04DA007F1C26 /* MediumScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumScene.swift; sourceTree = "<group>"; };
 		2A16E6FA223C064B007F1C26 /* HardScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardScene.swift; sourceTree = "<group>"; };
 		2A20D2A3224E541E00FBB63D /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		2A41E85A228D8B4F0026BC76 /* TiltManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TiltManager.swift; path = FirstGameSwift/swift/Common/TiltManager.swift; sourceTree = SOURCE_ROOT; };
 		2A4388A422314E3C002C98E8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2A5294EB2271DD030069893E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A5294ED2271E1970069893E /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		2A5DE0652243C66C0011F5D5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A41E85A228D8B4F0026BC76 /* TiltManager.swift */,
 				2A20D2A3224E541E00FBB63D /* Preferences.swift */,
 				2A5DE0672243C6900011F5D5 /* Common.swift */,
 				BC97291F22564C72003898E5 /* GameInfo.swift */,
@@ -398,6 +401,7 @@
 				BCD83E69224D2C4A00B2F8DF /* GameoverScene.swift in Sources */,
 				2A8722FB223BDEF8006C0C7D /* EasyScene.swift in Sources */,
 				2A90ABCC227B2446001A6990 /* AnalyticsManager.swift in Sources */,
+				2A41E85B228D8B4F0026BC76 /* TiltManager.swift in Sources */,
 				BC9F32B42243F3C000281683 /* LeaderboardsScene.swift in Sources */,
 				2A20D2A4224E541E00FBB63D /* Preferences.swift in Sources */,
 				BC97292022564C72003898E5 /* GameInfo.swift in Sources */,
@@ -500,7 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -556,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -572,6 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L39XRZ7493;
 				INFOPLIST_FILE = FirstGameSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -590,6 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L39XRZ7493;
 				INFOPLIST_FILE = FirstGameSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

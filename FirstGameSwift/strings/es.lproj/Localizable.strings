@@ -28,3 +28,6 @@
 "menu" = "Menu";
 "save & menu" = "Guardar y volver";
 "insert name" = "Insertar nombre";
+"hello title" = "Hola!";
+"hello message" = "¡Estás muy cerca de donde se hizo este juego!";
+

@@ -24,19 +24,21 @@ class MainMenuScene: SKScene, ButtonDelegate {
     
     let analytics = AnalyticsManager()
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    private var bg1 : SKSpriteNode?
-    private var audioButton : Toggle?
-    private var audioIcon1 : SKTexture?
-    private var audioIcon2 : SKTexture?
-    private var easyButton : Button?
-    private var mediumButton : Button?
-    private var hardButton : Button?
-    private var leaderboardButton : Button?
-    private var title : SKLabelNode?
+    var label : SKLabelNode?
+    var bg1 : SKSpriteNode?
+    var audioButton : Toggle?
+    var audioIcon1 : SKTexture?
+    var audioIcon2 : SKTexture?
+    var easyButton : Button?
+    var mediumButton : Button?
+    var hardButton : Button?
+    var leaderboardButton : Button?
+    var title : SKLabelNode?
+    var tiltManager: TiltManager!
+    var tiltMaxDistance: CGFloat = 30.0
     
     override func didMove(to view: SKView) {
+        tiltManager = TiltManager()
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
         if let bg1 = bg1 {
@@ -122,6 +124,17 @@ class MainMenuScene: SKScene, ButtonDelegate {
         }
         
         Common.addCredits(scene: self)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        var tiltToUse = tiltManager.tiltX * 75
+        if(tiltToUse > self.tiltMaxDistance){
+            tiltToUse = self.tiltMaxDistance
+        }
+        else if (tiltToUse < -self.tiltMaxDistance){
+            tiltToUse = -self.tiltMaxDistance
+        }
+        bg1?.position = CGPoint(x: self.view!.center.x + tiltToUse, y: self.view!.center.y)
     }
     
     func onTap(sender: Button) {

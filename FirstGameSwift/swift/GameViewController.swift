@@ -14,74 +14,13 @@ import UserNotifications
 
 import GoogleMobileAds
 
-class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
+class GameViewController: UIViewController{
     
     let locationManager = CLLocationManager()
     let notificationManager = UNUserNotificationCenter.current()
     
     var bannerView: GADBannerView!
     public var intersticial: GADInterstitial!
-    
-    func backToMainMenu(sender: SKScene) {
-        if let view = self.view as? SKView{
-            let scene = MainMenuScene(size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-            scene.changeSceneDelegate = self
-        }
-    }
-    
-    func goToGameOver(sender: SKScene, gamelogic: Gamelogic, level: String) {
-        if let view = self.view as? SKView{
-            let scene = GameoverScene(size: view.frame.size)
-            scene.scaleMode = .aspectFill
-            scene.changeSceneDelegate = self
-            scene.defineScores(streak: gamelogic.matchStreak, attempts: gamelogic.attempts, score: gamelogic.points, bonus: gamelogic.bonusScore)
-            scene.levelFrom = level
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-        }
-    }
-    
-    func goToEasy(sender: MainMenuScene) {
-        if let view = self.view as? SKView {
-            let scene = EasyScene (size: view.frame.size)
-            scene.changeSceneDelegate = self
-            scene.gameoverDelegate = self
-            scene.scaleMode = .aspectFill
-            scene.vc = self
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-        }
-    }
-    func goToMedium(sender: MainMenuScene){
-        if let view = self.view as? SKView {
-            let scene = MediumScene (size: view.frame.size)
-            scene.changeSceneDelegate = self
-            scene.gameoverDelegate = self
-            scene.scaleMode = .aspectFill
-            scene.vc = self
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-        }
-    }
-    func goToHard(sender: MainMenuScene){
-        if let view = self.view as? SKView {
-            let scene = HardScene (size: view.frame.size)
-            scene.changeSceneDelegate = self
-            scene.gameoverDelegate = self
-            scene.scaleMode = .aspectFill
-            scene.vc = self
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-        }
-    }
-    func goToLeaderboards(sender: MainMenuScene) {
-        if let view = self.view as? SKView {
-            let scene = LeaderboardsScene (size: view.frame.size)
-            scene.changeSceneDelegate = self
-            scene.uiViewController = self
-            scene.scaleMode = .aspectFill
-            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
-        }
-    }
-    
     
     
     func initLocation(){
@@ -114,6 +53,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         
         initLocation()
         initNotifications()
+        activateNotification()
         
         /*
         //BANNER
@@ -176,7 +116,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
             ])
     }
     
-    func showHello(){
+    func activateNotification(){
         notificationManager.getNotificationSettings { [weak self](settings) in
             if settings.authorizationStatus == .authorized {
                 //send notification
@@ -200,7 +140,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
         content.body = NSLocalizedString("Notification description", comment: "")
         
         //notification trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         
         //notification request
         let notificationRequest = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
@@ -214,7 +154,7 @@ class GameViewController: UIViewController, MainMenuDelegate, SceneDelegate {
     }
     
     func showHelloPopup(){
-        let dialog = UIAlertController (title: "Hello!", message: "You found the office!", preferredStyle: .alert)
+        let dialog = UIAlertController (title: NSLocalizedString("hello title", comment: ""), message: NSLocalizedString("hello message", comment: ""), preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         dialog.addAction(action)
         present(dialog, animated: true, completion: nil)
@@ -259,7 +199,7 @@ extension GameViewController: CLLocationManagerDelegate {
             print(lastLocation)
             if(lastLocation.distance(from: officeLocation) < 50){
                 //Do stuff
-                showHello()
+                showHelloPopup()
             }
         }
     }
@@ -267,6 +207,66 @@ extension GameViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
+}
+
+extension GameViewController: MainMenuDelegate, SceneDelegate  {
+    func backToMainMenu(sender: SKScene) {
+        if let view = self.view as? SKView{
+            let scene = MainMenuScene(size: view.frame.size)
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+            scene.changeSceneDelegate = self
+        }
+    }
     
+    func goToGameOver(sender: SKScene, gamelogic: Gamelogic, level: String) {
+        if let view = self.view as? SKView{
+            let scene = GameoverScene(size: view.frame.size)
+            scene.scaleMode = .aspectFill
+            scene.changeSceneDelegate = self
+            scene.defineScores(streak: gamelogic.matchStreak, attempts: gamelogic.attempts, score: gamelogic.points, bonus: gamelogic.bonusScore)
+            scene.levelFrom = level
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+        }
+    }
     
+    func goToEasy(sender: MainMenuScene) {
+        if let view = self.view as? SKView {
+            let scene = EasyScene (size: view.frame.size)
+            scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
+            scene.scaleMode = .aspectFill
+            scene.vc = self
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+        }
+    }
+    func goToMedium(sender: MainMenuScene){
+        if let view = self.view as? SKView {
+            let scene = MediumScene (size: view.frame.size)
+            scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
+            scene.scaleMode = .aspectFill
+            scene.vc = self
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+        }
+    }
+    func goToHard(sender: MainMenuScene){
+        if let view = self.view as? SKView {
+            let scene = HardScene (size: view.frame.size)
+            scene.changeSceneDelegate = self
+            scene.gameoverDelegate = self
+            scene.scaleMode = .aspectFill
+            scene.vc = self
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+        }
+    }
+    func goToLeaderboards(sender: MainMenuScene) {
+        if let view = self.view as? SKView {
+            let scene = LeaderboardsScene (size: view.frame.size)
+            scene.changeSceneDelegate = self
+            scene.uiViewController = self
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene, transition: .crossFade(withDuration: 0.2))
+        }
+    }
 }
