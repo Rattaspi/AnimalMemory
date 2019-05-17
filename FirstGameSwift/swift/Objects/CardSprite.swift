@@ -28,6 +28,8 @@ class CardSprite : Button {
         self.cardSize = size
         self.cardDelegate = delegate
         
+        super.clickSoundName = "sfx_flip3.wav"
+        
         self.texture = backTexture
         self.isUserInteractionEnabled = true
         scale(to: size)

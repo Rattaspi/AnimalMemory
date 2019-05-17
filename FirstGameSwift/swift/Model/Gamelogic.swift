@@ -81,10 +81,6 @@ class Gamelogic: CardBehavior {
     
     //when a card is flipped this method is called
     func cardFlipped(card: CardSprite) {
-        if(AudioManager.globalSoundOn!){
-            let revealAudio = SKAction.sequence([SKAction.playSoundFileNamed("sfx_flip3", waitForCompletion: false)])
-            card.run(revealAudio)
-        }
         if(revealedCard == nil){
             revealedCard = card
         }

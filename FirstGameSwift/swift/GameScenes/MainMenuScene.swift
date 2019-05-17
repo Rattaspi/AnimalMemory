@@ -34,11 +34,14 @@ class MainMenuScene: SKScene, ButtonDelegate {
     var hardButton : Button?
     var leaderboardButton : Button?
     var title : SKLabelNode?
+    //let audioManager: AudioManager = AudioManager()
     var tiltManager: TiltManager!
     var tiltMaxDistance: CGFloat = 30.0
     
     override func didMove(to view: SKView) {
         tiltManager = TiltManager()
+        AudioManager.shared.play()
+        
         //SET THE LAYER1 BACKGROUND
         bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
         if let bg1 = bg1 {
@@ -140,7 +143,6 @@ class MainMenuScene: SKScene, ButtonDelegate {
     func onTap(sender: Button) {
         if(sender == audioButton){
             changeAudioSprite()
-            //TODO enable or disable the app audio
         }
         else if(sender == easyButton){
             changeSceneDelegate?.goToEasy(sender: self)
@@ -162,10 +164,12 @@ class MainMenuScene: SKScene, ButtonDelegate {
                 if(muted){
                     audioButton.on = false
                     audioButton.texture = audioIcon2
+                    AudioManager.shared.off()
                 }
                 else{
                     audioButton.on = true
                     audioButton.texture = audioIcon1
+                    AudioManager.shared.on()
                 }
                 Preferences.saveSoundState(audioButton.on!)
                 AudioManager.globalSoundOn = audioButton.on

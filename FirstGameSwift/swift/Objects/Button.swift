@@ -16,6 +16,7 @@ class Button: SKSpriteNode {
     
     weak var delegate: ButtonDelegate?
     public var buttonText : SKLabelNode?
+    var clickSoundName = "sfx_click.wav"
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let action = SKAction.scale(by: 0.85, duration: 0.1)
@@ -26,7 +27,7 @@ class Button: SKSpriteNode {
         let action = SKAction.scale(by: 1.0/0.85, duration: 0.1)
         var sequence: SKAction
         if(AudioManager.globalSoundOn!){
-            sequence = SKAction.sequence([SKAction.playSoundFileNamed("sfx_click.wav", waitForCompletion: false),
+            sequence = SKAction.sequence([SKAction.playSoundFileNamed(clickSoundName, waitForCompletion: false),
                                           action])
         }
         else {
