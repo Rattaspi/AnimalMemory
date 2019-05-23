@@ -25,7 +25,7 @@ class MainMenuScene: SKScene, ButtonDelegate {
     let analytics = AnalyticsManager()
     
     var label : SKLabelNode?
-    var bg1 : SKSpriteNode?
+    var bg = [SKSpriteNode]()
     var audioButton : Toggle?
     var audioIcon1 : SKTexture?
     var audioIcon2 : SKTexture?
@@ -34,7 +34,6 @@ class MainMenuScene: SKScene, ButtonDelegate {
     var hardButton : Button?
     var leaderboardButton : Button?
     var title : SKLabelNode?
-    //let audioManager: AudioManager = AudioManager()
     var tiltManager: TiltManager!
     var tiltMaxDistance: CGFloat = 30.0
     
@@ -43,12 +42,21 @@ class MainMenuScene: SKScene, ButtonDelegate {
         AudioManager.shared.play()
         
         //SET THE LAYER1 BACKGROUND
-        bg1 = SKSpriteNode(imageNamed: GameInfo.bgName)
+        for i in 0..<6 {
+            let layer = SKSpriteNode(imageNamed: "bg\(i)")
+            layer.position = view.center
+            layer.scale(to: CGSize(width: self.frame.width * layer.frame.width / layer.frame.height, height: self.frame.height))
+            addChild(layer)
+            bg.append(layer)
+        }
+        /*
+        bg.append(SKSpriteNode(imageNamed: GameInfo.bgName))
         if let bg1 = bg1 {
             bg1.position = view.center
             bg1.scale(to: CGSize(width: self.frame.width * bg1.frame.width / bg1.frame.height, height: self.frame.height))
             addChild(bg1)
         }
+        */
         
         //SET THE TITLE
         title = SKLabelNode(fontNamed: "TimKid")
@@ -137,7 +145,11 @@ class MainMenuScene: SKScene, ButtonDelegate {
         else if (tiltToUse < -self.tiltMaxDistance){
             tiltToUse = -self.tiltMaxDistance
         }
-        bg1?.position = CGPoint(x: self.view!.center.x + tiltToUse, y: self.view!.center.y)
+        //bg1?.position = CGPoint(x: self.view!.center.x + tiltToUse, y: self.view!.center.y)
+        for i in 0..<6 {
+            let layeredTilt = tiltToUse / (CGFloat(i) + CGFloat(1.0))
+            bg[i].position = CGPoint(x: self.view!.center.x + layeredTilt, y: self.view!.center.y)
+        }
     }
     
     func onTap(sender: Button) {

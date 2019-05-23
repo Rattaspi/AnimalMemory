@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstGameSwift/swift/GameScenes/MainMenuScene.swift"
-            timestampString = "579789043.438008"
+            timestampString = "580305858.288221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "update(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstGameSwift/swift/GameScenes/MainMenuScene.swift"
-            timestampString = "579789043.438377"
+            timestampString = "580305858.288577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "update(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FirstGameSwift/swift/GameScenes/MainMenuScene.swift"
-            timestampString = "579789043.4387079"
+            timestampString = "580305858.2887959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "update(_:)"
-            landmarkType = "7">
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "MainMenuScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

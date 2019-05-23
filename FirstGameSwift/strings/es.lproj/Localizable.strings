@@ -22,12 +22,12 @@
 "global" = "Mundial";
 "match streak" = "Mejor racha";
 "attempts" = "Intentos";
-"score" = "Puntuacion";
+"score" = "Puntuación";
 "bonus" = "Bonificación";
 "total" = "Puntuación total";
 "menu" = "Menu";
-"save & menu" = "Guardar y volver";
-"insert name" = "Insertar nombre";
+"save & menu" = "Guardar";
+"insert name" = "Nombre";
 "hello title" = "Hola!";
 "hello message" = "¡Estás muy cerca de donde se hizo este juego!";
 

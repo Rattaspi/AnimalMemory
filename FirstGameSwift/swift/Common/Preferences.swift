@@ -58,7 +58,7 @@ class Preferences {
         var done = false
         for i in 0..<scores.count {
             if !done{
-                if(score > scores[i] || scores[i] == nil){
+                if(score > scores[i]){
                     scores.insert(score, at: i)
                     names.insert(name, at: i)
                     done = true
