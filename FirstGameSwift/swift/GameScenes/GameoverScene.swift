@@ -13,6 +13,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
     weak var changeSceneDelegate : SceneDelegate?
     
     let analytics = AnalyticsManager()
+    let dbManager = DBManager()
     
     var backButton: Button?
     var saveButton: Button?
@@ -148,7 +149,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
             if let text = textFieldButton.buttonText?.text {
                 if (text != placeholderText && text != "") {
                     Preferences.saveScore(name: text, score: scores![4])
-                    DBManager.UpdateInfo(score: scores![scores!.count-1], username: text, userId: GameInfo.dbId)
+                    dbManager.updateInfo(score: scores![scores!.count-1], username: text, userId: GameInfo.dbId)
                     analytics.isScoreSaved(true, level: levelFrom)
                     changeSceneDelegate?.backToMainMenu(sender: self)
                 }

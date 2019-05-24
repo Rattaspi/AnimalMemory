@@ -12,6 +12,7 @@ import GoogleMobileAds
 
 class LeaderboardsScene: SKScene, ButtonDelegate {
     weak var changeSceneDelegate: SceneDelegate?
+	let dbManager: DBManager = DBManager()
 	
 	let analytics = AnalyticsManager()
     
@@ -81,7 +82,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         }
         //***NAMES AND SCORES
         //get the info database info
-		DBManager.getHighscores { scores in
+		dbManager.getHighscores { scores in
 			for i in 0..<6 {
 				if(i < scores.count){
 					self.globalInfo.append(scores[i])

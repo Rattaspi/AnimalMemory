@@ -16,17 +16,17 @@ class DBManager {
     //import FirebaseAnalytics
     //Analytics.logEvent("nextLevel", parameters: ["levelNumber: 2])
     
-    static let k_COLLECTION_SCORES = "scores"
+    let k_COLLECTION_SCORES = "scores"
     
-    static func writeUserScore(name: String, score: Int){
+    func writeUserScore(name: String, score: Int){
         let db = Firestore.firestore()
         
         db.collection(k_COLLECTION_SCORES).addDocument(data: [
             "name": name,
             "score": score])
     }
-    /*
-    static func getUserScore(){
+    
+    func getUserScore(){
         let db = Firestore.firestore()
         let doc = db.document("scores/F558BC34-DB3E-43A0-B230-4B02908B3943")
         doc.getDocument { (snapshot, error) in
@@ -45,9 +45,8 @@ class DBManager {
                 }
                 
     }
-    */
- 
-    static func getHighscores(block: @escaping ([String] ) -> Void) {
+    
+    func getHighscores(block: @escaping ([String] ) -> Void) {
         let db = Firestore.firestore()
         
         var info = [String]()
@@ -69,13 +68,27 @@ class DBManager {
         
     }
     
-    static func UpdateInfo(score: Int, username: String?, userId: String){
+    func updateInfo(score: Int, username: String?, userId: String){
         let db = Firestore.firestore()
         
         db.collection(k_COLLECTION_SCORES)
-            .document(userId)
-            .setData([
-                "score": score, "username": username ?? "", "userId":userId
-                ], merge: true)
-    }
+            .document(userId).getDocument {(snapshot, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    if let score = snapshot?.data()?["score"]{
+                        db.collection(self.k_COLLECTION_SCORES)
+                            .document(userId)
+                            .setData([
+                                "score": score, "username": username ?? "", "userId":userId
+                                ], merge: true)
+                        }
+                    }
+                    
+                }
+                
+        }
+        
+        
 }
