@@ -146,8 +146,9 @@ class MainMenuScene: SKScene, ButtonDelegate {
             tiltToUse = -self.tiltMaxDistance
         }
         //bg1?.position = CGPoint(x: self.view!.center.x + tiltToUse, y: self.view!.center.y)
+        let tiltLayers: [CGFloat] = [1.0, 0.85, 0.8, 0.65, 0.4, 0.2]
         for i in 0..<6 {
-            let layeredTilt = tiltToUse / (CGFloat(i) + CGFloat(1.0))
+            let layeredTilt = tiltToUse * tiltLayers[i]
             bg[i].position = CGPoint(x: self.view!.center.x + layeredTilt, y: self.view!.center.y)
         }
     }

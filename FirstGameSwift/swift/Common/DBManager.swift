@@ -25,13 +25,13 @@ class DBManager {
             "name": name,
             "score": score])
     }
-    
+    /*
     static func getUserScore(){
         let db = Firestore.firestore()
         let doc = db.document("scores/F558BC34-DB3E-43A0-B230-4B02908B3943")
         doc.getDocument { (snapshot, error) in
             if let snapshot = snapshot {
-                print(snapshot.data()?["score1"])
+                //print(snapshot.data()?["score1"])
             }
         }
         db.collection(k_COLLECTION_SCORES).whereField("score", isGreaterThan: 0)
@@ -45,7 +45,8 @@ class DBManager {
                 }
                 
     }
-    
+    */
+ 
     static func getHighscores(block: @escaping ([String] ) -> Void) {
         let db = Firestore.firestore()
         

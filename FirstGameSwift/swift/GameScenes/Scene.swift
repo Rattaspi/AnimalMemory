@@ -58,7 +58,7 @@ class Scene: SKScene, ButtonDelegate {
         //score icon
         scoreIcon = SKSpriteNode(imageNamed: "score")
         if let scoreIcon = scoreIcon {
-            scoreIcon.position = CGPoint(x: self.frame.width * 0.35, y: self.frame.height * 0.95)
+            scoreIcon.position = CGPoint(x: self.frame.width * 0.35, y: self.frame.height * 0.93)
             scoreIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
             
             addChild(scoreIcon)
@@ -66,7 +66,7 @@ class Scene: SKScene, ButtonDelegate {
         //score label
         scoreLabel = SKLabelNode(text: "0")
         if let scoreLabel = scoreLabel {
-            scoreLabel.position = CGPoint(x: self.frame.width * 0.43, y: self.frame.height * 0.94)
+            scoreLabel.position = CGPoint(x: self.frame.width * 0.43, y: self.frame.height * 0.92)
             scoreLabel.verticalAlignmentMode = .center
             scoreLabel.horizontalAlignmentMode = .left
             scoreLabel.fontSize = scoreFontSize
@@ -78,14 +78,14 @@ class Scene: SKScene, ButtonDelegate {
         //bonus icon
         bonusIcon = SKSpriteNode(imageNamed: "bonus")
         if let bonusIcon = bonusIcon{
-            bonusIcon.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.94)
+            bonusIcon.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.92)
             bonusIcon.scale(to: CGSize(width: self.frame.width * 0.12, height: self.frame.width * 0.12))
             addChild(bonusIcon)
         }
         //bonus label
         bonusLabel = SKLabelNode(text: "999")
         if let bonusLabel = bonusLabel {
-            bonusLabel.position = CGPoint(x: self.frame.width * 0.82, y: self.frame.height * 0.94)
+            bonusLabel.position = CGPoint(x: self.frame.width * 0.82, y: self.frame.height * 0.92)
             bonusLabel.verticalAlignmentMode = .center
             bonusLabel.horizontalAlignmentMode = .left
             bonusLabel.fontSize = scoreFontSize

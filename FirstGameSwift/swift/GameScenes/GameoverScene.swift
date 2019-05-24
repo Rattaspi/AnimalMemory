@@ -38,7 +38,7 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
         
         //***SCREEN TITLE***
-        title = SKLabelNode(text: "You won!")
+        title = SKLabelNode(text: NSLocalizedString("win", comment: ""))
         if let title = title {
             title.fontName = GameInfo.fontName
             title.fontSize = 40

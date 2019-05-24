@@ -108,6 +108,9 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 			displayingInfo.append(text)
             
             text = SKLabelNode(text: info[i*2 + 1])
+			if(text.text == "0") {
+				text.text = ""
+			}
             text.position = CGPoint(x: initialPosScores.x, y: initialPosScores.y - initialYOffsetScores - (yOffsetScores * CGFloat(i)))
             text.horizontalAlignmentMode = .left
             text.fontSize = 20
