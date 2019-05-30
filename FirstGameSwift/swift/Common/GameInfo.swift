@@ -8,6 +8,7 @@
 
 import CoreGraphics
 
+
 class GameInfo {
     static var dbId: String = ""
     
@@ -18,24 +19,48 @@ class GameInfo {
     static let timeBonusMultiplier = 50
     static let pointsPerCard = 100
     
-    class Easy: GameInfo {
-        let initialPos = CGPoint(x: 0.20, y: 0.4)
-        let offset = CGPoint(x: 0.20, y: 0.16)
-        let row = 2
-        let column = 4
-    }
+    var initialPos: CGPoint!
+    var offset: CGPoint!
+    var row: Int!
+    var column: Int!
+    var cWidth: Int!
+    var cHeight: Int!
     
-    class Medium: GameInfo {
-        let initialPos = CGPoint(x: 0.20, y: 0.2)
-        let offset = CGPoint(x: 0.20, y: 0.16)
-        let row = 4
-        let column = 4
+    init(){}
+}
+
+class Easy: GameInfo {
+    override init (){
+        super.init()
+        initialPos = CGPoint(x: 0.20, y: 0.4)
+        offset = CGPoint(x: 0.20, y: 0.16)
+        row = 2
+        column = 4
+        cWidth = 70
+        cHeight = 84
     }
-    
-    class Hard: GameInfo {
-        let initialPos = CGPoint(x: 0.15, y: 0.12)
-        let offset = CGPoint(x: 0.164, y: 0.14)
-        let row = 6
-        let column = 5
+}
+
+class Medium: GameInfo {
+    override init(){
+        super.init()
+        initialPos = CGPoint(x: 0.20, y: 0.2)
+        offset = CGPoint(x: 0.20, y: 0.16)
+        row = 4
+        column = 4
+        cWidth = 70
+        cHeight = 84
+    }
+}
+
+class Hard: GameInfo {
+    override init(){
+        super.init()
+        initialPos = CGPoint(x: 0.15, y: 0.12)
+        offset = CGPoint(x: 0.164, y: 0.14)
+        row = 6
+        column = 5
+        cWidth = 60
+        cHeight = 72
     }
 }

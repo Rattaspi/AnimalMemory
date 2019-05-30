@@ -55,17 +55,6 @@ class GameViewController: UIViewController{
         initNotifications()
         activateNotification()
         
-        /*
-        //BANNER
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        
-        addBannerViewToView(bannerView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        //bannerView.removeFromSuperview
-        */
-        
         //My add key does not work: ca-app-pub-3986547639162462/9966646591
         //Example key (it kinda works): ca-app-pub-3940256099942544/4411468910
         intersticial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
@@ -232,7 +221,8 @@ extension GameViewController: MainMenuDelegate, SceneDelegate  {
     
     func goToEasy(sender: MainMenuScene) {
         if let view = self.view as? SKView {
-            let scene = EasyScene (size: view.frame.size)
+            let scene = Scene (size: view.frame.size)
+            scene.level = Gamelogic.Level.easy
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
             scene.scaleMode = .aspectFill
@@ -242,7 +232,8 @@ extension GameViewController: MainMenuDelegate, SceneDelegate  {
     }
     func goToMedium(sender: MainMenuScene){
         if let view = self.view as? SKView {
-            let scene = MediumScene (size: view.frame.size)
+            let scene = Scene (size: view.frame.size)
+            scene.level = Gamelogic.Level.medium
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
             scene.scaleMode = .aspectFill
@@ -252,7 +243,8 @@ extension GameViewController: MainMenuDelegate, SceneDelegate  {
     }
     func goToHard(sender: MainMenuScene){
         if let view = self.view as? SKView {
-            let scene = HardScene (size: view.frame.size)
+            let scene = Scene (size: view.frame.size)
+            scene.level = Gamelogic.Level.hard
             scene.changeSceneDelegate = self
             scene.gameoverDelegate = self
             scene.scaleMode = .aspectFill

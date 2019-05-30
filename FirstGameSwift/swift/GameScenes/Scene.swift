@@ -20,10 +20,9 @@ class Scene: SKScene, ButtonDelegate {
     var vc: UIViewController!
     
     let analytics = AnalyticsManager()
-    
-    var placeholderText: String?
-    var level: GameInfo?
-    
+
+    var info: GameInfo!
+    var level: Gamelogic.Level!
     
     var displayingCards: [CardSprite]?
     var gamelogic: Gamelogic?
@@ -39,7 +38,7 @@ class Scene: SKScene, ButtonDelegate {
     let scoreFontSize: CGFloat = 23
     
     override func didMove(to view: SKView) {        
-        level = GameInfo.Easy()
+        
         
         //BACKGROUND
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgName)
@@ -50,6 +49,7 @@ class Scene: SKScene, ButtonDelegate {
             backButton.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.height * 0.95)
             backButton.scaleAspectRatio(width: self.frame.width * 0.1)
             backButton.isUserInteractionEnabled = true
+            backButton.delegate = self
             
             addChild(backButton)
         }
@@ -91,6 +91,63 @@ class Scene: SKScene, ButtonDelegate {
             bonusLabel.fontSize = scoreFontSize
             
             addChild(bonusLabel)
+        }
+        
+        //Instantiate the gamelogic
+        gamelogic = Gamelogic()
+        
+        
+        //***SETUP THE CARDS DEPENDING ON THE LEVEL***
+        switch level! {
+        case Gamelogic.Level.easy:
+            analytics.openSceneEvent(sceneName: "easy_scene")
+            gamelogic?.start(level: Gamelogic.Level.easy)
+            gamelogic?.maxTime = 20
+            info = Easy()
+            
+        case Gamelogic.Level.medium:
+            analytics.openSceneEvent(sceneName: "medium_scene")
+            gamelogic?.start(level: Gamelogic.Level.medium)
+            gamelogic?.maxTime = 60
+            info = Medium()
+            
+        case Gamelogic.Level.hard:
+            analytics.openSceneEvent(sceneName: "hard_scene")
+            gamelogic?.start(level: Gamelogic.Level.hard)
+            gamelogic?.maxTime = 90
+            info = Hard()
+        }
+        
+        //SETUP THE CARDSPRITES
+        displayingCards = [CardSprite]()
+        if let cards = gamelogic?.cards {
+            for card in cards {
+                let cardSprite = CardSprite(imageNamed: "")
+                if let gamelogic = gamelogic {
+                    cardSprite.setUp(card: card, scene: self, size: CGSize(width: info.cWidth, height: info.cHeight), delegate: gamelogic)
+                    displayingCards?.append(cardSprite)
+                }
+            }
+        }
+        
+        //Setup the cardsprite positions and
+        //add those to the scene
+        let initialPos = CGPoint(x: self.frame.width * info.initialPos.x, y: self.frame.height * info.initialPos.y)
+        let offsetX = self.frame.width * info.offset.x
+        let offsetY = self.frame.height * info.offset.y
+        if let cards = displayingCards {
+            let cardShuffled = cards.shuffled()
+            for row in 0 ..< info.row {
+                for column in 0 ..< info.column {
+                    let i = row * info.column + column
+                    let x = initialPos.x + offsetX * CGFloat(column)
+                    let y = initialPos.y + offsetY * CGFloat(row)
+                    cardShuffled[i].position = CGPoint(x: x, y: y)
+                }
+            }
+            for c in 0 ..< cardShuffled.count {
+                addChild(cardShuffled[c])
+            }
         }
         
         Common.addCredits(scene: self)
@@ -136,7 +193,28 @@ class Scene: SKScene, ButtonDelegate {
         }
     }
     
+    func backToMainMenu(){
+        changeSceneDelegate?.backToMainMenu(sender: self)
+    }
+    
     func onTap(sender: Button) {
-        print("onTap not  implemented")
+        if(sender == backButton){
+            errorPrevention()
+        }
+    }
+    
+    func errorPrevention(){
+        let popup = UIAlertController(title: NSLocalizedString("Error title", comment: ""), message: NSLocalizedString("Error message", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        
+        popup.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
+            self.analytics.gameCancelled(time: self.gamelogic?.bonusTime ?? 0)
+            self.backToMainMenu()
+        }))
+        
+        popup.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        vc.present(popup, animated: true, completion: nil)
     }
 }
