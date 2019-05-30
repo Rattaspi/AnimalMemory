@@ -26,6 +26,7 @@ class DBManager {
             "score": score])
     }
     
+    /*
     func getUserScore(){
         let db = Firestore.firestore()
         let doc = db.document("scores/F558BC34-DB3E-43A0-B230-4B02908B3943")
@@ -45,6 +46,7 @@ class DBManager {
                 }
                 
     }
+    */
     
     func getHighscores(block: @escaping ([String] ) -> Void) {
         let db = Firestore.firestore()

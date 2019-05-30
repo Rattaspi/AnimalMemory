@@ -13,6 +13,7 @@ class Preferences {
     
     static let k_SOUND_ON = "SOUND_ON"
     static let k_MY_DB_ID = "DB_ID"
+    static let k_NAME = "NAME"
     static let k_LOCAL1_NAME = "LOCAL1_NAME"
     static let k_LOCAL2_NAME = "LOCAL2_NAME"
     static let k_LOCAL3_NAME = "LOCAL3_NAME"
@@ -30,6 +31,18 @@ class Preferences {
     
     static func saveSoundState(_ b : Bool){
         UserDefaults.standard.set(b, forKey: k_SOUND_ON)
+    }
+    
+    static func saveName(name: String){
+        UserDefaults.standard.set(name, forKey: k_NAME)
+    }
+    
+    static func getName() -> String {
+        if let _ = UserDefaults.standard.object(forKey: k_NAME){
+            let name = UserDefaults.standard.string(forKey: k_NAME)
+            return name ?? ""
+        }
+        return ""
     }
     
     static func getLocalHighscores() -> [String] {

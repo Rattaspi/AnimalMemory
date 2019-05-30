@@ -49,14 +49,6 @@ class MainMenuScene: SKScene, ButtonDelegate {
             addChild(layer)
             bg.append(layer)
         }
-        /*
-        bg.append(SKSpriteNode(imageNamed: GameInfo.bgName))
-        if let bg1 = bg1 {
-            bg1.position = view.center
-            bg1.scale(to: CGSize(width: self.frame.width * bg1.frame.width / bg1.frame.height, height: self.frame.height))
-            addChild(bg1)
-        }
-        */
         
         //SET THE TITLE
         title = SKLabelNode(fontNamed: "TimKid")

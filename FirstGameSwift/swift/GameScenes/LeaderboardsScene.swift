@@ -28,9 +28,21 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 	var globalInfo = [String]()
 	var displayingInfo = [SKLabelNode]()
 	var uiViewController: GameViewController!
+	
+	var swipeRightGesture = UISwipeGestureRecognizer()
+	var swipeLeftGesture = UISwipeGestureRecognizer()
     
     override func didMove(to view: SKView) {
 		analytics.openSceneEvent(sceneName: "leaderboards_scene")
+		
+		//***SWIPE SETUP***
+		swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight(sender:)))
+		swipeRightGesture.direction = .right
+		view.addGestureRecognizer(swipeRightGesture)
+		
+		swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft(sender:)))
+		swipeLeftGesture.direction = .left
+		view.addGestureRecognizer(swipeLeftGesture)
 		
 		//***BACKGROUND***
         Common.setupBackground(scene: self, imageNamed: GameInfo.bgBlurName)
@@ -166,12 +178,33 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 		if(local){
 			for i in 0..<displayingInfo.count {
 				displayingInfo[i].text = info[i]
+				if(displayingInfo[i].text == "0") {
+					displayingInfo[i].text = ""
+				}
 			}
 		}
 		else {
 			for i in 0..<displayingInfo.count {
 				displayingInfo[i].text = globalInfo[i]
+				if(displayingInfo[i].text == "0") {
+					displayingInfo[i].text = ""
+				}
 			}
 		}
+	}
+
+	override func willMove(from view: SKView) {
+		view.removeGestureRecognizer(swipeRightGesture)
+		view.removeGestureRecognizer(swipeLeftGesture)
+	}
+	
+	@objc func swipeRight(sender: AnyObject){
+		local = !local
+		updateDisplayedScores()
+	}
+	
+	@objc func swipeLeft(sender: AnyObject){
+		local = !local
+		updateDisplayedScores()
 	}
 }

@@ -112,7 +112,15 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         
         initialInputFieldPos = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.3)
         textFieldButton.position = initialInputFieldPos!
-        textFieldButton.createButtonText(text: NSLocalizedString("insert name", comment: "")) //11 letters max
+        var deviceName: String = UIDevice.current.name
+        let savedName = Preferences.getName()
+        if(savedName != ""){
+            deviceName = savedName
+        }
+        if(deviceName.count > 11){
+            deviceName = String(deviceName.prefix(11))
+        }
+        textFieldButton.createButtonText(text: deviceName) //11 letters max
         textFieldButton.buttonText?.fontSize = 60
         textFieldButton.alignTextLeft()
         textFieldButton.isUserInteractionEnabled = true;
@@ -147,8 +155,9 @@ class GameoverScene: SKScene, ButtonDelegate, UITextFieldDelegate {
         }
         else if(sender == saveButton){
             if let text = textFieldButton.buttonText?.text {
-                if (text != placeholderText && text != "") {
+                if (text != "") {
                     Preferences.saveScore(name: text, score: scores![4])
+                    Preferences.saveName(name: text)
                     dbManager.updateInfo(score: scores![scores!.count-1], username: text, userId: GameInfo.dbId)
                     analytics.isScoreSaved(true, level: levelFrom)
                     changeSceneDelegate?.backToMainMenu(sender: self)
