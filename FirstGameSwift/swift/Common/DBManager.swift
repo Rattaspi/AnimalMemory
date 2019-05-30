@@ -10,12 +10,6 @@ import Foundation
 import FirebaseFirestore
 
 class DBManager {
-    //Unique identifier
-    //UUID().uuidString
-    
-    //import FirebaseAnalytics
-    //Analytics.logEvent("nextLevel", parameters: ["levelNumber: 2])
-    
     let k_COLLECTION_SCORES = "scores"
     
     func writeUserScore(name: String, score: Int){
@@ -25,29 +19,7 @@ class DBManager {
             "name": name,
             "score": score])
     }
-    
-    /*
-    func getUserScore(){
-        let db = Firestore.firestore()
-        let doc = db.document("scores/F558BC34-DB3E-43A0-B230-4B02908B3943")
-        doc.getDocument { (snapshot, error) in
-            if let snapshot = snapshot {
-                //print(snapshot.data()?["score1"])
-            }
-        }
-        db.collection(k_COLLECTION_SCORES).whereField("score", isGreaterThan: 0)
-            .getDocuments{ (snapshot, error) in
-                    if let error = error {
-                        print(error)
-                    }
-                    else {
-                        snapshot?.documents.forEach({ print($0.data()) })
-                    }
-                }
-                
-    }
-    */
-    
+
     func getHighscores(block: @escaping ([String] ) -> Void) {
         let db = Firestore.firestore()
         
@@ -67,7 +39,6 @@ class DBManager {
                     block(info)
                 }
         }
-        
     }
     
     func updateInfo(score: Int, username: String?, userId: String){
@@ -89,8 +60,5 @@ class DBManager {
                     }
                     
                 }
-                
         }
-        
-        
 }

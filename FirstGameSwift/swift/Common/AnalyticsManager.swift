@@ -8,7 +8,6 @@
 
 import Foundation
 import FirebaseAnalytics
-//Analytics.logEvent("nextLevel", parameters: ["levelNumber": 2])
 
 class AnalyticsManager {
     func saveBonusAnalytic(level: Gamelogic.Level, time: Int){
