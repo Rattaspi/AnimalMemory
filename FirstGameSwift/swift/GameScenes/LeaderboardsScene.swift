@@ -27,13 +27,40 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 	var info = [String]()
 	var globalInfo = [String]()
 	var displayingInfo = [SKLabelNode]()
+	var medals = [SKSpriteNode]()
 	var uiViewController: GameViewController!
+	
+	var initialPosScores: CGPoint!
 	
 	var swipeRightGesture = UISwipeGestureRecognizer()
 	var swipeLeftGesture = UISwipeGestureRecognizer()
-    
+	
+	//ACTIONS
+	var moveRight: SKAction!
+	var moveLeft: SKAction!
+	
+	
     override func didMove(to view: SKView) {
 		analytics.openSceneEvent(sceneName: "leaderboards_scene")
+		
+		let moveTime = 0.15
+		moveRight = SKAction.sequence([
+			SKAction.moveBy(x: view.frame.width, y: 0, duration: moveTime),
+			SKAction.run{
+				self.updateDisplayedScores()
+			},
+			SKAction.moveBy(x: -(view.frame.width*2), y: 0, duration: 0.0),
+			SKAction.moveBy(x: view.frame.width, y: 0, duration: moveTime)
+			])
+		
+		moveLeft = SKAction.sequence([
+			SKAction.moveBy(x: -view.frame.width, y: 0, duration: moveTime),
+			SKAction.run{
+				self.updateDisplayedScores()
+			},
+			SKAction.moveBy(x: view.frame.width*2, y: 0, duration: 0.0),
+			SKAction.moveBy(x: -view.frame.width, y: 0, duration: moveTime)
+			])
 		
 		//***SWIPE SETUP***
 		swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight(sender:)))
@@ -89,6 +116,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             let medal = SKSpriteNode(imageNamed: "medal"+String(i+1))
             medal.position = CGPoint(x: initialPosMedals.x, y: initialPosMedals.y - yOffsetMedals * CGFloat(i))
             medal.size = CGSize(width: medalSize, height: medalSize)
+			medals.append(medal)
             addChild(medal)
             
         }
@@ -108,7 +136,7 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
         info = Preferences.getLocalHighscores()
 		
         //display the info
-        let initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
+        initialPosScores = CGPoint(x: self.frame.width * 0.3, y: self.frame.height * 0.62)
         let yOffsetScores = self.frame.height * 0.16
         let initialYOffsetScores = self.frame.height * 0.05 //Offset for the score number
         for i in 0..<info.count/2 {
@@ -164,13 +192,26 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
             changeSceneDelegate?.backToMainMenu(sender: self)
         }
 		else if(sender == localButton){
-			local = true
-			updateDisplayedScores()
+			if(local != true){
+				local = true
+				
+				displayingInfo.forEach { (label: SKLabelNode) in
+					label.run(moveRight)
+				}
+				medals.forEach { (sprite: SKSpriteNode) in
+					sprite.run(moveRight)
+				}
+			}
 		}
 		else if(sender == globalButton){
 			local = false
-			updateDisplayedScores()
 			
+			displayingInfo.forEach { (label: SKLabelNode) in
+				label.run(moveLeft)
+			}
+			medals.forEach { (sprite: SKSpriteNode) in
+				sprite.run(moveLeft)
+			}
 		}
     }
 	
@@ -200,11 +241,21 @@ class LeaderboardsScene: SKScene, ButtonDelegate {
 	
 	@objc func swipeRight(sender: AnyObject){
 		local = !local
-		updateDisplayedScores()
+		displayingInfo.forEach { (label: SKLabelNode) in
+			label.run(moveRight)
+		}
+		medals.forEach { (sprite: SKSpriteNode) in
+			sprite.run(moveRight)
+		}
 	}
 	
 	@objc func swipeLeft(sender: AnyObject){
 		local = !local
-		updateDisplayedScores()
+		displayingInfo.forEach { (label: SKLabelNode) in
+			label.run(moveLeft)
+		}
+		medals.forEach { (sprite: SKSpriteNode) in
+			sprite.run(moveLeft)
+		}
 	}
 }
