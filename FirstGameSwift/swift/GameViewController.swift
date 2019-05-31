@@ -182,7 +182,7 @@ extension GameViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let officeLocation = CLLocation(latitude: 51.50998, longitude: -0.1337)
+        let officeLocation = CLLocation(latitude: 41.382248, longitude: 2.116751)
         if let lastLocation = locations.last {
             //process the last location
             print(lastLocation)
